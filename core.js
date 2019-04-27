@@ -3,6 +3,7 @@ function Ecra(nome) {
     this.nome = nome;
 }
 
+
 var HUD = {
     estado: "OFF",
     ecraActual: undefined,
@@ -15,6 +16,7 @@ var HUD = {
         sclollDown: undefined
     },
 }
+
 
 // contexto controlador padrão
 function SetControladorPadrao() {
