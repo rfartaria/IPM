@@ -105,6 +105,9 @@ var HUD = {
         }
     },
 
+    loadView: function(ecra) {
+        
+    },
 
     updateInterface: function() {
         // colocar os icons dos ecrãs registados
@@ -112,6 +115,8 @@ var HUD = {
         // mudar a classe do icon do ecrã que está activo
         if (HUD.ecraActual)
             $('#icon-ecra-'+HUD.ecraActual.id).addClass("hud-icon-active");
+        // carregar view do ecrã activo
+        HUD.loadView(HUD.ecraActual);
     }
 }
 
