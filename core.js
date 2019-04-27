@@ -8,8 +8,7 @@ var HUD = {
         clickOK: undefined,
         clickBack: undefined,
         clickONOFF: undefined,
-        scrollUp: undefined,
-        sclollDown: undefined
+        scroll: undefined,
     },
 
     setUp: function() {
@@ -31,20 +30,42 @@ var HUD = {
         HUD.updateInterface();
     },
 
+    nextEcra: function() {
+        var i = HUD.ecrasOrdem.indexOf(HUD.ecraActual);
+        if (i>=0 && i<HUD.ecrasOrdem.length-1) {
+            HUD.ecraActual = HUD.ecrasOrdem[i+1];
+        }
+        HUD.updateInterface();
+    },
+
+    previousEcra: function() {
+        var i = HUD.ecrasOrdem.indexOf(HUD.ecraActual);
+        if (i>0) {
+            HUD.ecraActual = HUD.ecrasOrdem[i-1];
+        }
+        HUD.updateInterface();
+    },
+
+    loadEcrasPadrao: function() {
+        HUD.ecrasOrdem = [ infoVeiculoController, radioController, chamadasController, gpsController ]
+        HUD.ecraActual = infoVeicuoController;
+        HUD.updateInterface();
+    },
+
     // contexto controlador padrão (quando não se está "dentro" de nenhum ecrã)
     setAccoesPadrao: function() {
         
         HUD.accoes.clickOK = function() {
-            if (ecraActual) {
-                if (ecraActual.id == "HELP1") {
-                    //TODO: ir para ecrã help 2
+            if (HUD.ecraActual) {
+                if (HUD.ecraActual.id == "HELP1") {
+                    HUD.nextEcra();
                     return;
                 }
-                if (ecraActual.id == "HELP2") {
-                    //TODO: ir para ecrã de informações do veículo
+                if (HUD.ecraActual.id == "HELP2") {
+                    HUD.loadEcrasPadrao();
                     return;
                 }
-                if (ecraActual.id == "INFO") {
+                if (HUD.ecraActual.id == "INFO") {
                     //TODO: ir para ecrã seguinte
                     return;
                 }
@@ -52,7 +73,7 @@ var HUD = {
         }
     
         HUD.accoes.clickBack = function() {
-            if (ecra) {
+            if (HUD.ecraActual) {
                 if (ecra.id == "HELP1") {
                     //TODO: ir para ecrã help 2
                     return;
@@ -72,12 +93,15 @@ var HUD = {
             }
         }
     
-        HUD.accoes.scrollUp = function() {
-    
-        }
-    
-        HUD.accoes.scrollDown = function() {
-    
+        HUD.accoes.scroll = function(e) {
+            var scrollDirectionUP = e.deltaY < 0;
+            if (HUD.ecraActual) {
+                if (scrollDirectionUP) {
+                    HUD.previousEcra();
+                } else {
+                    HUD.nextEcra();
+                }
+            }
         }
     },
 

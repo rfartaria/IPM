@@ -11,6 +11,7 @@
     <script src="jquery-3.4.0.js"></script>
     <script src="help1Controller.js"></script>
     <script src="help2Controller.js"></script>
+    <script src="infoVeiculoController.js"></script>
     <script src="core.js"></script>
 </head>
 <body>
@@ -33,10 +34,10 @@
                     <div class="controlador-object">
                         <img class="controlador-img" id='controlador' src="controlador.png" usemap="#image-map">
                         <map name="image-map">
-                            <area target="" alt="OK" title="OK" href="javascript:void(0)" coords="95,134,77,132,76,64,218,66,223,74,223,125,171,124,171,134,132,133,130,94,96,95" shape="poly">
-                            <area target="" alt="CANCEL" title="CANCEL" href="javascript:void(0)" coords="222,211,76,213,74,146,95,144,95,183,131,182,132,145,166,145,167,150,221,150" shape="poly">
-                            <area target="" alt="SCROLL" title="SCROLL" href="javascript:void(0)" coords="98,96,127,181" shape="rect" onwheel="alert('SCROLL')">
-                            <area target="" alt="ON/OFF" title="ON/OFF" href="javascript:void(0)" coords="173,150,222,125" shape="rect" onclick="HUD.accoes.clickONOFF()">
+                            <area target="" alt="OK" title="OK" href="javascript:void(0)" coords="95,134,77,132,76,64,218,66,223,74,223,125,171,124,171,134,132,133,130,94,96,95" shape="poly" onclick="HUD.accoes.clickOK();">
+                            <area target="" alt="CANCEL" title="CANCEL" href="javascript:void(0)" coords="222,211,76,213,74,146,95,144,95,183,131,182,132,145,166,145,167,150,221,150" shape="poly" onclick="HUD.accoes.clickBack();">
+                            <area target="" alt="SCROLL" title="SCROLL" href="javascript:void(0)" coords="98,96,127,181" shape="rect" onwheel="HUD.accoes.scroll(event);">
+                            <area target="" alt="ON/OFF" title="ON/OFF" href="javascript:void(0)" coords="173,150,222,125" shape="rect" onclick="HUD.accoes.clickONOFF();">
                         </map>
                     </div>
                 </div>
