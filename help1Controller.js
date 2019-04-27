@@ -3,9 +3,7 @@
 var help1Controller = {
     ID: "HELP1",
     URL: "help1View.html",
-
-    getIconHtml: function() {
-        return ``
-    }
+    CSS: "help1Styles.css",
+    ICONHtml: ``
 }
 

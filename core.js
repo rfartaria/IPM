@@ -14,7 +14,18 @@ var HUD = {
 
     setUp: function() {
         HUD.estado = "OFF";
-        ecraActual = undefined;
+        HUD.setAccoesPadrao();
+    },
+
+    turnON: function() {
+        alert("Oh, Its ON!")
+        HUD.estado = "ON";
+        HUD.ecrasOrdem = [ help1Controller ];
+        HUD.updateInterface();
+    },
+
+    turnOFF: function() {
+        alert("Bye bye!")
     },
 
     // contexto controlador padrão (quando não se está "dentro" de nenhum ecrã)
@@ -31,7 +42,7 @@ var HUD = {
                     return;
                 }
                 if (ecraActual.ID == "INFO") {
-                    //TODO: ir para ecrã de informações do veículo
+                    //TODO: ir para ecrã seguinte
                     return;
                 }
             }
@@ -52,11 +63,9 @@ var HUD = {
     
         HUD.accoes.clickONOFF = function() {
             if (HUD.estado == "OFF") {
-                HUD.estado = "ON";
-                //TODO: mostrar HELP
+                HUD.turnON();
             } else {
-                HUD.estado = "OFF";
-                //TODO: desligar ecrã do HUD
+                HUD.turnOFF()
             }
         }
     
@@ -67,5 +76,11 @@ var HUD = {
         HUD.accoes.scrollDown = function() {
     
         }
+    },
+
+
+    updateInterface: function() {
+        
     }
 }
+
