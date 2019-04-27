@@ -1,69 +1,71 @@
 
-function Ecra(nome) {
-    this.nome = nome;
-}
-
-
+// singleton
 var HUD = {
-    estado: "OFF",
+    estado: undefined,
     ecraActual: undefined,
     ecrasOrdem: [],
-    controlador: {
+    accoes: {
         clickOK: undefined,
         clickBack: undefined,
         clickONOFF: undefined,
         scrollUp: undefined,
         sclollDown: undefined
     },
-}
 
+    setUp: function() {
+        HUD.estado = "OFF";
+        ecraActual = undefined;
+    },
 
-// contexto controlador padrão
-function SetControladorPadrao() {
+    // contexto controlador padrão (quando não se está "dentro" de nenhum ecrã)
+    setAccoesPadrao: function() {
+        
+        HUD.accoes.clickOK = function() {
+            if (ecraActual) {
+                if (ecraActual.ID == "HELP1") {
+                    //TODO: ir para ecrã help 2
+                    return;
+                }
+                if (ecraActual.ID == "HELP2") {
+                    //TODO: ir para ecrã de informações do veículo
+                    return;
+                }
+                if (ecraActual.ID == "INFO") {
+                    //TODO: ir para ecrã de informações do veículo
+                    return;
+                }
+            }
+        }
     
-    HUD.controlador.clickOK = function() {
-        if (ecra) {
-            if (ecraActual.ID == "HELP1") {
-                //TODO: ir para ecrã help 2
-                return;
-            }
-            if (ecraActual.ID == "HELP2") {
-                //TODO: ir para ecrã de informações do veículo
-                return;
-            }
-        }
-    }
-
-    HUD.controlador.clickBack = function() {
-        if (ecra) {
-            if (ecra.ID == "HELP1") {
-                //TODO: ir para ecrã help 2
-                return;
-            }
-            if (ecra.ID == "HELP2") {
-                //TODO: ir para ecrã de informações do veículo
-                return;
+        HUD.accoes.clickBack = function() {
+            if (ecra) {
+                if (ecra.ID == "HELP1") {
+                    //TODO: ir para ecrã help 2
+                    return;
+                }
+                if (ecra.ID == "HELP2") {
+                    //TODO: ir para ecrã de informações do veículo
+                    return;
+                }
             }
         }
-    }
-
-    HUD.controlador.clickONOFF = function() {
-        if (HUD.estado == "OFF") {
-            HUD.estado = "ON";
-            //TODO: mostrar HELP
-        } else {
-            HUD.estado = "OFF";
-            //TODO: desligar ecrã do HUD
+    
+        HUD.accoes.clickONOFF = function() {
+            if (HUD.estado == "OFF") {
+                HUD.estado = "ON";
+                //TODO: mostrar HELP
+            } else {
+                HUD.estado = "OFF";
+                //TODO: desligar ecrã do HUD
+            }
+        }
+    
+        HUD.accoes.scrollUp = function() {
+    
+        }
+    
+        HUD.accoes.scrollDown = function() {
+    
         }
     }
-
-    HUD.controlador.scrollUp = function() {
-
-    }
-
-    HUD.controlador.scrollDown = function() {
-
-    }
-
 }
-
