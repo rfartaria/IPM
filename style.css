@@ -1,0 +1,59 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+    color: rgb(0,0,0);
+  }
+
+#app {
+    width: 950px;
+    margin: auto;
+}
+
+.top-space {
+    height: 100px;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
+
+.hud-container {
+    background-color: rgb(236, 236, 236);
+    grid-column: 1;
+    height: 400px;
+    display: grid;
+    grid-template-columns: 70px auto;
+}
+
+.controlador-container {
+    background-color: rgb(253, 255, 231);
+    grid-column: 2;
+}
+
+.hud-icons-container {
+    grid-column: 1;
+}
+
+.hud-icon {
+    height: 70px;
+    background-color: rgb(245, 245, 220);
+}
+
+.hud-icon-active {
+    border: 1px;
+    border-style: solid;
+    border-color: black;
+    background-color: rgb(224, 224, 201);
+}
+
+.hud-screen {
+    border: 1px;
+    border-style: solid;
+    border-color: black;
+}
+
+.controlador-object {
+    padding-left: 20px;
+    padding-top: 60px;
+}
