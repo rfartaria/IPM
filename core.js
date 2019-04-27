@@ -14,18 +14,21 @@ var HUD = {
 
     setUp: function() {
         HUD.estado = "OFF";
+        HUD.ecrasOrdem = [];
+        HUD.ecraActual = null;
         HUD.setAccoesPadrao();
     },
 
     turnON: function() {
-        alert("Oh, Its ON!")
         HUD.estado = "ON";
-        HUD.ecrasOrdem = [ help1Controller ];
+        HUD.ecrasOrdem = [ help1Controller, help2Controller ];
+        HUD.ecraActual = help1Controller;
         HUD.updateInterface();
     },
-
+    
     turnOFF: function() {
-        alert("Bye bye!")
+        HUD.setUp();
+        HUD.updateInterface();
     },
 
     // contexto controlador padrão (quando não se está "dentro" de nenhum ecrã)
@@ -33,15 +36,15 @@ var HUD = {
         
         HUD.accoes.clickOK = function() {
             if (ecraActual) {
-                if (ecraActual.ID == "HELP1") {
+                if (ecraActual.id == "HELP1") {
                     //TODO: ir para ecrã help 2
                     return;
                 }
-                if (ecraActual.ID == "HELP2") {
+                if (ecraActual.id == "HELP2") {
                     //TODO: ir para ecrã de informações do veículo
                     return;
                 }
-                if (ecraActual.ID == "INFO") {
+                if (ecraActual.id == "INFO") {
                     //TODO: ir para ecrã seguinte
                     return;
                 }
@@ -50,11 +53,11 @@ var HUD = {
     
         HUD.accoes.clickBack = function() {
             if (ecra) {
-                if (ecra.ID == "HELP1") {
+                if (ecra.id == "HELP1") {
                     //TODO: ir para ecrã help 2
                     return;
                 }
-                if (ecra.ID == "HELP2") {
+                if (ecra.id == "HELP2") {
                     //TODO: ir para ecrã de informações do veículo
                     return;
                 }
@@ -80,7 +83,11 @@ var HUD = {
 
 
     updateInterface: function() {
-        
+        // colocar os icons dos ecrãs registados
+        $('#hud-icons-container').html(HUD.ecrasOrdem.map((c) => {return c.iconHtml}).join(''));
+        // mudar a classe do icon do ecrã que está activo
+        if (HUD.ecraActual)
+            $('#icon-ecra-'+HUD.ecraActual.id).addClass("hud-icon-active");
     }
 }
 
