@@ -1,6 +1,6 @@
 // controlador do ecrã HELP1
 
-var infoVeiculoController = {
+var chamadasController = {
     id: "CHAMADAS",
     url: "chamadasView.html",
     css: "chamadasStyles.css",

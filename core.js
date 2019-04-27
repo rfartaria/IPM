@@ -48,7 +48,7 @@ var HUD = {
 
     loadEcrasPadrao: function() {
         HUD.ecrasOrdem = [ infoVeiculoController, radioController, chamadasController, gpsController ]
-        HUD.ecraActual = infoVeicuoController;
+        HUD.ecraActual = infoVeiculoController;
         HUD.updateInterface();
     },
 
@@ -74,12 +74,12 @@ var HUD = {
     
         HUD.accoes.clickBack = function() {
             if (HUD.ecraActual) {
-                if (ecra.id == "HELP1") {
-                    //TODO: ir para ecrã help 2
+                if (HUD.ecraActual.id == "HELP1") {
+                    HUD.nextEcra();
                     return;
                 }
-                if (ecra.id == "HELP2") {
-                    //TODO: ir para ecrã de informações do veículo
+                if (HUD.ecraActual.id == "HELP2") {
+                    HUD.loadEcrasPadrao();
                     return;
                 }
             }

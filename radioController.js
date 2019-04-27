@@ -1,6 +1,6 @@
 // controlador do ecrã HELP1
 
-var infoVeiculoController = {
+var radioController = {
     id: "RADIO",
     url: "radioView.html",
     css: "radioStyles.css",
