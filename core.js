@@ -106,7 +106,7 @@ var HUD = {
     },
 
     loadView: function(ecra) {
-        
+        alert("loadView");
     },
 
     updateInterface: function() {
