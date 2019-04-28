@@ -9,9 +9,10 @@ var radioController = {
     estacaoActual: 0,
 
     setAccoesIniciais: function() {
+        radioController.updateInterface();
         HUD.accoes.clickOK = function() {
-
-        };
+            
+        }
 
         HUD.accoes.scroll = function(e) {
             var scrollDirectionUP = e.deltaY < 0;
@@ -22,19 +23,29 @@ var radioController = {
                     radioController.nextEstacao();
                 }
             }
-        };
+        }
+
+        HUD.accoes.clickBack = function() {
+            HUD.setAccoesPadrao();
+        }
     },
 
     previousEstacao: function() {
-
+        if(estacaoActual != 0){
+            estacaoActual--;
+            radioController.updateInterface();
+        }
     },
 
     nextEstacao: function() {
-
+        if(estacaoActual != 4){
+            estacaoActual++;
+            radioController.updateInterface();
+        }
     },
 
     updateInterface: function() {
-        $('#estacoes-radio li['+estacaoActual+']').addClass('RADIO-');
+        $('#estacoes-radio li['+estacaoActual+']').addClass('RADIO-estacao-seleccionada');
     }
 }
 
