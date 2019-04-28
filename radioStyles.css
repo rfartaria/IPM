@@ -1,3 +1,6 @@
 /* CSS específico do ecrã */
 /* usar prefixo adequado para todas as classes */
 
+.RADIO-estacao-seleccionada {
+    font-weight: bold;
+}

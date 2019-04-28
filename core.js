@@ -6,6 +6,7 @@ var HUD = {
     ecrasOrdem: [],
     accoes: {
         clickOK: undefined,
+        holdOK: undefined,
         clickBack: undefined,
         clickONOFF: undefined,
         scroll: undefined,
@@ -65,10 +66,15 @@ var HUD = {
                     HUD.loadEcrasPadrao();
                     return;
                 }
-                if (HUD.ecraActual.id == "INFO") {
-                    //TODO: ir para ecrã seguinte
+                if (HUD.ecraActual.id == "INFOVEICULO") {
+                    //TODO: ir para contexto do INFOVEICULO
                     return;
                 }
+                if (HUD.ecraActual.id == "RADIO") {
+                    radioController.setAccoesIniciais();
+                    return;
+                }
+                //TODO: os outros ecrãs
             }
         }
     
