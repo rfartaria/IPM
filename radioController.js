@@ -7,6 +7,7 @@ var radioController = {
     iconHtml: `<div class="hud-icon" id="icon-ecra-RADIO">RADIO</div>`,
 
     estacaoActual: 0,
+    estacaoAnterior: 0,
 
     setAccoesIniciais: function() {
         radioController.updateInterface();
@@ -26,26 +27,32 @@ var radioController = {
         }
 
         HUD.accoes.clickBack = function() {
+            $('#estacoes-radio li:eq('+(radioController.estacaoActual)+')').removeClass('RADIO-estacao-seleccionada');
             HUD.setAccoesPadrao();
         }
     },
 
     previousEstacao: function() {
-        if(estacaoActual != 0){
-            estacaoActual--;
+        if(radioController.estacaoActual > 0){
+            radioController.estacaoAnterior = radioController.estacaoActual;
+            radioController.estacaoActual--;
             radioController.updateInterface();
         }
     },
 
     nextEstacao: function() {
-        if(estacaoActual != 4){
-            estacaoActual++;
+        if(radioController.estacaoActual < 3){
+            radioController.estacaoAnterior = radioController.estacaoActual;
+            radioController.estacaoActual++;
             radioController.updateInterface();
         }
     },
 
     updateInterface: function() {
-        $('#estacoes-radio li['+estacaoActual+']').addClass('RADIO-estacao-seleccionada');
+            var aTirar = $('#estacoes-radio li:eq('+(radioController.estacaoAnterior)+')');
+            aTirar.removeClass('RADIO-estacao-seleccionada');
+        var aSelecionar = $('#estacoes-radio li:eq('+(radioController.estacaoActual)+')');
+        aSelecionar.addClass('RADIO-estacao-seleccionada');
     }
 }
 
