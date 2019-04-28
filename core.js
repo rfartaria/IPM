@@ -105,8 +105,17 @@ var HUD = {
         }
     },
 
-    loadView: function(ecra) {
-        alert("loadView");
+    loadEcraView: function() {
+        if (HUD.ecraActual) {
+            $.get(HUD.ecraActual.url, function(data) {
+                $("#hud-screen-container").html(data);
+            })
+            .fail(function(){
+                alert("não consegui obter html da view!");
+            });
+        } else {
+            $("#hud-screen-container").html('');
+        }
     },
 
     updateInterface: function() {
@@ -116,7 +125,7 @@ var HUD = {
         if (HUD.ecraActual)
             $('#icon-ecra-'+HUD.ecraActual.id).addClass("hud-icon-active");
         // carregar view do ecrã activo
-        HUD.loadView(HUD.ecraActual);
+        HUD.loadEcraView();
     }
 }
 
