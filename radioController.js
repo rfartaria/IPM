@@ -1,4 +1,4 @@
-// controlador do ecrã HELP1
+// controlador do ecrã de RADIO
 
 var radioController = {
     id: "RADIO",
@@ -49,8 +49,8 @@ var radioController = {
     },
 
     updateInterface: function() {
-            var aTirar = $('#estacoes-radio li:eq('+(radioController.estacaoAnterior)+')');
-            aTirar.removeClass('RADIO-estacao-seleccionada');
+        var aTirar = $('#estacoes-radio li:eq('+(radioController.estacaoAnterior)+')');
+        aTirar.removeClass('RADIO-estacao-seleccionada');
         var aSelecionar = $('#estacoes-radio li:eq('+(radioController.estacaoActual)+')');
         aSelecionar.addClass('RADIO-estacao-seleccionada');
     }

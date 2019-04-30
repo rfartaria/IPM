@@ -57,3 +57,11 @@
     padding-left: 20px;
     padding-top: 60px;
 }
+
+html { 
+    background: url(driving_01.png) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
