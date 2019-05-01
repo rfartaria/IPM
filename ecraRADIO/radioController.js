@@ -9,20 +9,22 @@ var radioController = {
     opcaoActual: 0,
     opcoesControllers: [],
 
+    //Coloca as variaveis iniciais (o acima devia faze-lo?)
     setUp: function(){
         //Tal como em core, uma lista de dois elementos que guarda os controladores de frequencia e estacao
         radioController.opcoesControllers = [ estacaoController, undefined ];
         radioController.opcaoActual = 0;
     },
 
+    //Regista as accoes iniciais
     setAccoesIniciais: function() {
         radioController.setUp();
         radioController.updateInterface();
         HUD.accoes.clickOK = function() {
             if (HUD.ecraActual) {
-                radioController.loadEcraView();
+                estacaoController.loadOwnEcraView();
                 radioController.opcoesControllers[radioController.opcaoActual].setAccoesIniciais();
-                //TODO: os outros ecrãs
+                //o ecra de frequencias nao serah implementado
             }
         }
 
@@ -43,14 +45,16 @@ var radioController = {
         }
     },
     
-    loadEcraView: function() {
+    //Carrega o HTML do proprio ecra
+    loadOwnEcraView: function() {
         //$("#hud-screen-container").load(opcoesControllers[opcaoActual].url);
         if (HUD.ecraActual) {
-            $.get(radioController.opcoesControllers[radioController.opcaoActual].url, function(data) {
+            $.get(/*radioController.opcoesControllers[radioController.opcaoActual]*/radioController.url, function(data) {
                 $("#hud-screen-container").html(data);
-                estacaoController.estacaoActual = 0;
-                estacaoController.ecraAnterior = radioController;
-                estacaoController.updateInterface();
+                //inicializar variaveis eh feito aqui
+                /*radioController.opcoesControllers = [ estacaoController, undefined ];
+                radioController.opcaoActual = 0;*/
+                radioController.updateInterface();
             })
             .fail(function(){
                 alert("não consegui obter html da view!");
@@ -60,17 +64,7 @@ var radioController = {
         }
     },
 
-    //nestes casos, a lista nunca mudaria no numero de opcoes, mesmo na implementacao completa -TV
-    previousEstacao: function() {
-        radioController.opcaoActual = 0;
-        radioController.updateInterface();
-    },
-
-    nextEstacao: function() {
-        radioController.opcaoActual = 1;
-        radioController.updateInterface();
-    },
-
+    //Atualiza as selecoes no ecra
     updateInterface: function() {
 
         var aTirar = $('#opcoes-radio li:eq(0)');
@@ -80,6 +74,19 @@ var radioController = {
         
         var aSelecionar = $('#opcoes-radio li:eq('+(radioController.opcaoActual)+')');
         aSelecionar.addClass('RADIO-opcao-seleccionada');
+    },
+
+    //FUNCOES
+    //nestes casos, a lista nunca mudaria no numero de opcoes, mesmo na implementacao completa -TV
+    previousEstacao: function() {
+        radioController.opcaoActual = 0;
+        radioController.updateInterface();
+    },
+
+    nextEstacao: function() {
+        radioController.opcaoActual = 1;
+        radioController.updateInterface();
     }
+
 }
 

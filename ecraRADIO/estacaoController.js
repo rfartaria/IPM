@@ -1,7 +1,5 @@
 // controlador do ecrã de ESTACAO
 
-
-//INCOMPLETO E NAO TESTADO -- E PRECISO CONSEGUIR ACEDER A ESTE VIA RADIO
 var estacaoController = {
     id: "ESTACAO",
     url: "ecraRADIO/estacaoView.html",
@@ -9,15 +7,19 @@ var estacaoController = {
     iconHtml: `<div class="hud-icon" id="icon-ecra-ESTACAO">ESTACAO</div>`,
 
     estacaoActual: 0,
-    estacaoAnterior: 0,
     ecraAnterior: undefined,
 
+    setUp: function(){
+        estacaoController.estacaoActual = 0;
+    },
+
+    //prepara as accoes iniciais de estacao
     setAccoesIniciais: function() {
         HUD.accoes.clickOK = function() {
             $('#estacoes-estacao li:eq('+(estacaoController.estacaoActual)+')').removeClass('ESTACAO-estacao-seleccionada');
-            HUD.updateInterface();
+            estacaoController.setUp();
+            radioController.loadOwnEcraView();
             radioController.setAccoesIniciais();
-
         }
 
         HUD.accoes.scroll = function(e) {
@@ -33,8 +35,23 @@ var estacaoController = {
 
         HUD.accoes.clickBack = function() {
             $('#estacoes-estacao li:eq('+(estacaoController.estacaoActual)+')').removeClass('ESTACAO-estacao-seleccionada');
-            HUD.updateInterface();
+            radioController.loadOwnEcraView();
             radioController.setAccoesIniciais();            
+        }
+    },
+
+    loadOwnEcraView: function() {
+        //$("#hud-screen-container").load(opcoesControllers[opcaoActual].url);
+        if (HUD.ecraActual) {
+            $.get(estacaoController.url, function(data) {
+                $("#hud-screen-container").html(data);
+                estacaoController.updateInterface();
+            })
+            .fail(function(){
+                alert("não consegui obter html da view!");
+            });
+        } else {
+            $("#hud-screen-container").html('');
         }
     },
 
