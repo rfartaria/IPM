@@ -8,6 +8,7 @@ var estacaoController = {
 
     estacaoActual: 0,
     ecraAnterior: undefined,
+    estacaoActualTxt: undefined,
 
     //Coloca as variaveis iniciais (o acima devia faze-lo?)
     setUp: function(){
@@ -19,7 +20,7 @@ var estacaoController = {
         HUD.accoes.clickOK = function() {
             var estacaoAAlterar = $('#estacoes-estacao li:eq('+(estacaoController.estacaoActual)+')');
             radioController.estacaoAtual = document.getElementsByClassName('ESTACAO-estacao-seleccionada')[0].innerHTML;
-            alert('A reproduzir ' + radioController.estacaoAtual);
+            // alert('A reproduzir ' + radioController.estacaoAtual);
             estacaoAAlterar.removeClass('ESTACAO-estacao-seleccionada');
             estacaoController.setUp();
             radioController.loadOwnEcraView();

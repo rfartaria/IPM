@@ -21,7 +21,8 @@ var HUD = {
 
     turnON: function() {
         HUD.estado = "ON";
-        HUD.ecrasOrdem = [ help1Controller, help2Controller ];
+        // HUD.ecrasOrdem = [ help1Controller, help2Controller ];
+        HUD.ecrasOrdem = [ help1Controller ];
         HUD.ecraActual = help1Controller;
         HUD.updateInterface();
     },
@@ -48,7 +49,8 @@ var HUD = {
     },
 
     loadEcrasPadrao: function() {
-        HUD.ecrasOrdem = [ infoVeiculoController, radioController, chamadasController, gpsController ]
+        HUD.ecrasOrdem = [ infoVeiculoController, radioController, chamadasController, gpsController, help1Controller ]
+        HUD.ecrasOrdem.map((e) => {if (e.setUp) e.setUp();});
         HUD.ecraActual = infoVeiculoController;
         HUD.updateInterface();
     },
@@ -59,7 +61,8 @@ var HUD = {
         HUD.accoes.clickOK = function() {
             if (HUD.ecraActual) {
                 if (HUD.ecraActual.id == "HELP1") {
-                    HUD.nextEcra();
+                    //HUD.nextEcra();
+                    HUD.loadEcrasPadrao();
                     return;
                 }
                 if (HUD.ecraActual.id == "HELP2") {
@@ -71,6 +74,8 @@ var HUD = {
                     return;
                 }
                 if (HUD.ecraActual.id == "RADIO") {
+                    HUD.setEcraActivo();
+                    radioController.opcaoActual = 0;
                     radioController.setAccoesIniciais();
                     return;
                 }
@@ -115,6 +120,7 @@ var HUD = {
         if (HUD.ecraActual) {
             $.get(HUD.ecraActual.url, function(data) {
                 $("#hud-screen-container").html(data);
+                if (HUD.ecraActual.updateInterface) HUD.ecraActual.updateInterface();
             })
             .fail(function(){
                 alert("não consegui obter html da view!");
@@ -132,6 +138,14 @@ var HUD = {
             $('#icon-ecra-'+HUD.ecraActual.id).addClass("hud-icon-active");
         // carregar view do ecrã activo
         HUD.loadEcraView();
+    },
+
+    setEcraActivo: function() {
+        $('#hud-screen-container').addClass('hud-screen-active');
+    },
+
+    setEcraInactivo: function() {
+        $('#hud-screen-container').removeClass('hud-screen-active');
     }
 }
 

@@ -7,19 +7,20 @@ var radioController = {
     iconHtml: `<div class="hud-icon" id="icon-ecra-RADIO"><img src="img/radio.svg" style="width:50px; padding-top:5px;"></div>`,
 
     estacaoAtual: undefined,
-    opcaoActual: 0,
+    opcaoActual: undefined,
     opcoesControllers: [],
 
     //Coloca as variaveis iniciais (o acima devia faze-lo?)
     setUp: function(){
         //Tal como em core, uma lista de dois elementos que guarda os controladores de frequencia e estacao
         radioController.opcoesControllers = [ estacaoController, undefined ];
-        radioController.opcaoActual = 0;
+        // radioController.opcaoActual = 0;
+        radioController.estacaoAtual = "";
     },
 
     //Regista as accoes iniciais
     setAccoesIniciais: function() {
-        radioController.setUp();
+        // radioController.setUp();
         radioController.updateInterface();
         HUD.accoes.clickOK = function() {
             if (HUD.ecraActual) {
@@ -41,7 +42,10 @@ var radioController = {
         }
 
         HUD.accoes.clickBack = function() {
-            $('#opcoes-radio li:eq('+(radioController.opcaoActual)+')').removeClass('RADIO-opcao-seleccionada');
+            // $('#opcoes-radio li:eq('+(radioController.opcaoActual)+')').removeClass('RADIO-opcao-seleccionada');
+            radioController.opcaoActual = undefined;
+            radioController.updateInterface();
+            HUD.setEcraInactivo();
             HUD.setAccoesPadrao();
         }
     },
@@ -67,7 +71,6 @@ var radioController = {
 
     //Atualiza as selecoes no ecra
     updateInterface: function() {
-
         var aTirar = $('#opcoes-radio li:eq(0)');
         aTirar.removeClass('RADIO-opcao-seleccionada');
         aTirar = $('#opcoes-radio li:eq(1)');
@@ -75,6 +78,8 @@ var radioController = {
         
         var aSelecionar = $('#opcoes-radio li:eq('+(radioController.opcaoActual)+')');
         aSelecionar.addClass('RADIO-opcao-seleccionada');
+
+        $('#RADIO-estacao-actual').text(radioController.estacaoAtual);
     },
 
     //FUNCOES
