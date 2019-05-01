@@ -16,7 +16,10 @@ var estacaoController = {
     //prepara as accoes iniciais de estacao
     setAccoesIniciais: function() {
         HUD.accoes.clickOK = function() {
-            $('#estacoes-estacao li:eq('+(estacaoController.estacaoActual)+')').removeClass('ESTACAO-estacao-seleccionada');
+            var estacaoAAlterar = $('#estacoes-estacao li:eq('+(estacaoController.estacaoActual)+')');
+            radioController.estacaoAtual = document.getElementsByClassName('ESTACAO-estacao-seleccionada')[0].innerHTML;
+            alert('A reproduzir ' + radioController.estacaoAtual);
+            estacaoAAlterar.removeClass('ESTACAO-estacao-seleccionada');
             estacaoController.setUp();
             radioController.loadOwnEcraView();
             radioController.setAccoesIniciais();
@@ -36,7 +39,8 @@ var estacaoController = {
         HUD.accoes.clickBack = function() {
             $('#estacoes-estacao li:eq('+(estacaoController.estacaoActual)+')').removeClass('ESTACAO-estacao-seleccionada');
             radioController.loadOwnEcraView();
-            radioController.setAccoesIniciais();            
+            radioController.setAccoesIniciais();
+            radioController.updateInterface();
         }
     },
 
