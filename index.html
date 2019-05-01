@@ -5,23 +5,23 @@
     
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="help1Styles.css">
-    <link rel="stylesheet" type="text/css" href="help2Styles.css">
-    <link rel="stylesheet" type="text/css" href="infoVeiculoStyles.css">
-    <link rel="stylesheet" type="text/css" href="radioStyles.css">
-    <link rel="stylesheet" type="text/css" href="estacaoStyles.css">
-    <link rel="stylesheet" type="text/css" href="chamadasStyles.css">
-    <link rel="stylesheet" type="text/css" href="gpsStyles.css">
+    <link rel="stylesheet" type="text/css" href="ecraHELP1/help1Styles.css">
+    <link rel="stylesheet" type="text/css" href="ecraHELP2/help2Styles.css">
+    <link rel="stylesheet" type="text/css" href="ecraINFO/infoVeiculoStyles.css">
+    <link rel="stylesheet" type="text/css" href="ecraRADIO/radioStyles.css">
+    <link rel="stylesheet" type="text/css" href="ecraRADIO/estacaoStyles.css">
+    <link rel="stylesheet" type="text/css" href="ecraCHAMADAS/chamadasStyles.css">
+    <link rel="stylesheet" type="text/css" href="ecraGPS/gpsStyles.css">
 
     <!-- SCRIPTS -->
     <script src="jquery-3.4.0.js"></script>
-    <script src="help1Controller.js"></script>
-    <script src="help2Controller.js"></script>
-    <script src="infoVeiculoController.js"></script>
-    <script src="radioController.js"></script>
-    <script src="estacaoController.js"></script>
-    <script src="chamadasController.js"></script>
-    <script src="gpsController.js"></script>
+    <script src="ecraHELP1/help1Controller.js"></script>
+    <script src="ecraHELP2/help2Controller.js"></script>
+    <script src="ecraINFO/infoVeiculoController.js"></script>
+    <script src="ecraRADIO/radioController.js"></script>
+    <script src="ecraRADIO/estacaoController.js"></script>
+    <script src="ecraCHAMADAS/chamadasController.js"></script>
+    <script src="ecraGPS/gpsController.js"></script>
     <script src="core.js"></script>
 </head>
 <body>
@@ -42,7 +42,7 @@
                 </div>
                 <div class="controlador-container">
                     <div class="controlador-object">
-                        <img class="controlador-img" id='controlador' src="controlador.png" usemap="#image-map">
+                        <img class="controlador-img" id='controlador' src="img/controlador.png" usemap="#image-map">
                         <map name="image-map">
                             <area target="" alt="OK" title="OK" href="javascript:void(0)" coords="95,134,77,132,76,64,218,66,223,74,223,125,171,124,171,134,132,133,130,94,96,95" shape="poly" onclick="HUD.accoes.clickOK();">
                             <area target="" alt="CANCEL" title="CANCEL" href="javascript:void(0)" coords="222,211,76,213,74,146,95,144,95,183,131,182,132,145,166,145,167,150,221,150" shape="poly" onclick="HUD.accoes.clickBack();">

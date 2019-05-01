@@ -2,8 +2,8 @@
 
 var radioController = {
     id: "RADIO",
-    url: "radioView.html",
-    css: "radioStyles.css",
+    url: "ecraRADIO/radioView.html",
+    css: "ecraRADIO/radioStyles.css",
     iconHtml: `<div class="hud-icon" id="icon-ecra-RADIO">RADIO</div>`,
 
     opcaoActual: 0,

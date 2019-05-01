@@ -4,8 +4,8 @@
 //INCOMPLETO E NAO TESTADO -- E PRECISO CONSEGUIR ACEDER A ESTE VIA RADIO
 var estacaoController = {
     id: "ESTACAO",
-    url: "estacaoView.html",
-    css: "estacaoStyles.css",
+    url: "ecraRADIO/estacaoView.html",
+    css: "ecraRADIO/estacaoStyles.css",
     iconHtml: `<div class="hud-icon" id="icon-ecra-ESTACAO">ESTACAO</div>`,
 
     estacaoActual: 0,
