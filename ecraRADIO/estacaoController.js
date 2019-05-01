@@ -9,11 +9,12 @@ var estacaoController = {
     estacaoActual: 0,
     ecraAnterior: undefined,
 
+    //Coloca as variaveis iniciais (o acima devia faze-lo?)
     setUp: function(){
         estacaoController.estacaoActual = 0;
     },
 
-    //prepara as accoes iniciais de estacao
+    //Regista as accoes iniciais
     setAccoesIniciais: function() {
         HUD.accoes.clickOK = function() {
             $('#estacoes-estacao li:eq('+(estacaoController.estacaoActual)+')').removeClass('ESTACAO-estacao-seleccionada');
@@ -40,6 +41,7 @@ var estacaoController = {
         }
     },
 
+    //Carrega o HTML do proprio ecra
     loadOwnEcraView: function() {
         //$("#hud-screen-container").load(opcoesControllers[opcaoActual].url);
         if (HUD.ecraActual) {
@@ -53,6 +55,17 @@ var estacaoController = {
         } else {
             $("#hud-screen-container").html('');
         }
+    },
+
+    //Atualiza as selecoes no ecra
+    updateInterface: function() {
+        var aTirar = $('#estacoes-radio li:eq('+(estacaoController.estacaoAnterior)+')');
+        aTirar.removeClass('ESTACAO-estacao-seleccionada');
+        //Problema curioso: Quando isto corre inicialmente, o addClass abaixo não atualiza imaediatamente. Por exemplo:
+        //Ao colocar um alert vazio aqui, ele corre. Mas se nao o fizer, nao corre immediatamente. So se fizer scroll.
+        //alert();
+        var aSelecionar = $('#estacoes-radio li:eq('+(estacaoController.estacaoActual)+')');
+        aSelecionar.addClass('ESTACAO-estacao-seleccionada');
     },
 
     previousEstacao: function() {
@@ -70,16 +83,6 @@ var estacaoController = {
             estacaoController.estacaoActual++;
             estacaoController.updateInterface();
         }
-    },
-
-    updateInterface: function() {
-        var aTirar = $('#estacoes-radio li:eq('+(estacaoController.estacaoAnterior)+')');
-        aTirar.removeClass('ESTACAO-estacao-seleccionada');
-        //Problema curioso: Quando isto corre inicialmente, o addClass abaixo não atualiza imaediatamente. Por exemplo:
-        //Ao colocar um alert vazio aqui, ele corre. Mas se nao o fizer, nao corre immediatamente. So se fizer scroll.
-        //alert();
-        var aSelecionar = $('#estacoes-radio li:eq('+(estacaoController.estacaoActual)+')');
-        aSelecionar.addClass('ESTACAO-estacao-seleccionada');
     }
 }
 
