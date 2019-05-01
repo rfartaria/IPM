@@ -11,16 +11,17 @@ var radioController = {
 
     setUp: function(){
         //Tal como em core, uma lista de dois elementos que guarda os controladores de frequencia e estacao
-        radioController.opcoesControllers = [estacaoController, frequenciaController];
-        radioController.setAccoesIniciais();
+        radioController.opcoesControllers = [ estacaoController, undefined ];
+        opcaoActual = 0;
     },
 
     setAccoesIniciais: function() {
+        radioController.setUp();
         radioController.updateInterface();
         HUD.accoes.clickOK = function() {
             if (HUD.ecraActual) {
-                
-                opcoesControllers[opcaoActual].setAccoesIniciais();
+                radioController.loadEcraView();
+                radioController.opcoesControllers[opcaoActual].setAccoesIniciais();
                 //TODO: os outros ecrãs
             }
         }
@@ -41,6 +42,21 @@ var radioController = {
             HUD.setAccoesPadrao();
         }
     },
+    
+    loadEcraView: function() {
+        //$("#hud-screen-container").load(opcoesControllers[opcaoActual].url);
+        if (HUD.ecraActual) {
+            $.get(radioController.opcoesControllers[opcaoActual].url, function(data) {
+                $("#hud-screen-container").html(data);
+            })
+            .fail(function(){
+                alert("não consegui obter html da view!");
+            });
+        } else {
+            $("#hud-screen-container").html('');
+        }
+    },
+
     //nestes casos, a lista nunca mudaria no numero de opcoes, mesmo na implementacao completa -TV
     previousEstacao: function() {
         radioController.opcaoActual = 0;

@@ -53,10 +53,12 @@ var estacaoController = {
     },
 
     updateInterface: function() {
+        alert("estou a correr");
         var aTirar = $('#estacoes-estacao li:eq('+(estacaoController.estacaoAnterior)+')');
         aTirar.removeClass('ESTACAO-estacao-seleccionada');
         var aSelecionar = $('#estacoes-ESTACAO li:eq('+(estacaoController.estacaoActual)+')');
         aSelecionar.addClass('ESTACAO-estacao-seleccionada');
+        alert("corri");
     }
 }
 
