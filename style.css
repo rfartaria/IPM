@@ -39,14 +39,14 @@
 
 .hud-icon {
     height: 70px;
-    background-color: rgb(245, 245, 220);
+    background-color: rgba(245, 245, 220,0.3);
 }
 
 .hud-icon-active {
     border: 1px;
     border-style: solid;
     border-color: black;
-    background-color: rgb(172, 255, 164);
+    background-color: rgba(172, 255, 164,0.3);
 }
 
 .hud-screen {
