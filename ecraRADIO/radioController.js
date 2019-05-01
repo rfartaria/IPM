@@ -12,7 +12,7 @@ var radioController = {
     setUp: function(){
         //Tal como em core, uma lista de dois elementos que guarda os controladores de frequencia e estacao
         radioController.opcoesControllers = [ estacaoController, undefined ];
-        opcaoActual = 0;
+        radioController.opcaoActual = 0;
     },
 
     setAccoesIniciais: function() {
@@ -21,7 +21,7 @@ var radioController = {
         HUD.accoes.clickOK = function() {
             if (HUD.ecraActual) {
                 radioController.loadEcraView();
-                radioController.opcoesControllers[opcaoActual].setAccoesIniciais();
+                radioController.opcoesControllers[radioController.opcaoActual].setAccoesIniciais();
                 //TODO: os outros ecrãs
             }
         }
@@ -46,7 +46,7 @@ var radioController = {
     loadEcraView: function() {
         //$("#hud-screen-container").load(opcoesControllers[opcaoActual].url);
         if (HUD.ecraActual) {
-            $.get(radioController.opcoesControllers[opcaoActual].url, function(data) {
+            $.get(radioController.opcoesControllers[radioController.opcaoActual].url, function(data) {
                 $("#hud-screen-container").html(data);
             })
             .fail(function(){
