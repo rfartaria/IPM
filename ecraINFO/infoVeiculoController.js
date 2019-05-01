@@ -4,6 +4,6 @@ var infoVeiculoController = {
     id: "INFOVEICULO",
     url: "ecraINFO/infoVeiculoView.html",
     css: "ecraINFO/infoVeiculoStyles.css",
-    iconHtml: `<div class="hud-icon" id="icon-ecra-INFOVEICULO">INFO_V</div>`
+    iconHtml: `<div class="hud-icon" id="icon-ecra-INFOVEICULO"><i class="fab fa-houzz" style="font-size: 36px; line-height: 70px;"></i></div>`
 }
 
