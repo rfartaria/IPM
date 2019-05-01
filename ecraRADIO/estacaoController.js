@@ -13,11 +13,6 @@ var estacaoController = {
     ecraAnterior: undefined,
 
     setAccoesIniciais: function() {
-        estacaoController.estacaoActual = 0;
-        estacaoController.ecraAnterior = radioController;
-        
-        estacaoController.updateInterface();
-        
         HUD.accoes.clickOK = function() {
             $('#estacoes-estacao li:eq('+(estacaoController.estacaoActual)+')').removeClass('ESTACAO-estacao-seleccionada');
             HUD.updateInterface();

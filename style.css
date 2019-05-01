@@ -40,6 +40,8 @@
 .hud-icon {
     height: 70px;
     background-color: rgba(245, 245, 220,0.3);
+    text-align: center;
+    vertical-align: middle;
 }
 
 .hud-icon-active {
