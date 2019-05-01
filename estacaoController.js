@@ -10,8 +10,12 @@ var estacaoController = {
 
     estacaoActual: 0,
     estacaoAnterior: 0,
+    ecraAnterior: undefined,
 
     setAccoesIniciais: function() {
+        estacaoController.estacaoActual = 0;
+        ecraAnterior = radioController;
+        
         estacaoController.updateInterface();
         HUD.accoes.clickOK = function() {
             //TODO: Regressar a RADIO (colocando a estacao selecionada no ecra RADIO, mas isso eh o menos)
@@ -29,9 +33,11 @@ var estacaoController = {
         }
 
         HUD.accoes.clickBack = function() {
-           /* $('#estacoes-estacao li:eq('+(estacaoController.estacaoActual)+')').removeClass('ESTACAO-estacao-seleccionada');
-            HUD.setAccoesPadrao();*/
+            $('#estacoes-estacao li:eq('+(estacaoController.estacaoActual)+')').removeClass('ESTACAO-estacao-seleccionada');
+            HUD.updateInterface();
+            radioController.setAccoesIniciais();
             //TODO: Regressar a RADIO
+            
         }
     },
 
@@ -53,12 +59,13 @@ var estacaoController = {
     },
 
     updateInterface: function() {
-        alert("estou a correr");
-        var aTirar = $('#estacoes-estacao li:eq('+(estacaoController.estacaoAnterior)+')');
+        var aTirar = $('#estacoes-radio li:eq('+(estacaoController.estacaoAnterior)+')');
         aTirar.removeClass('ESTACAO-estacao-seleccionada');
-        var aSelecionar = $('#estacoes-ESTACAO li:eq('+(estacaoController.estacaoActual)+')');
+        //Problema curioso: Quando isto corre inicialmente, o addClass abaixo não atualiza imaediatamente. Por exemplo:
+        //Ao colocar um alert vazio aqui, ele corre. Mas se nao o fizer, nao corre immediatamente. So se fizer scroll.
+        //alert();
+        var aSelecionar = $('#estacoes-radio li:eq('+(estacaoController.estacaoActual)+')');
         aSelecionar.addClass('ESTACAO-estacao-seleccionada');
-        alert("corri");
     }
 }
 
