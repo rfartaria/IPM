@@ -48,6 +48,9 @@ var radioController = {
         if (HUD.ecraActual) {
             $.get(radioController.opcoesControllers[opcaoActual].url, function(data) {
                 $("#hud-screen-container").html(data);
+                estacaoController.estacaoActual = 0;
+                estacaoController.ecraAnterior = radioController;
+                estacaoController.updateInterface();
             })
             .fail(function(){
                 alert("não consegui obter html da view!");

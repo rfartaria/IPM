@@ -13,10 +13,6 @@ var estacaoController = {
     ecraAnterior: undefined,
 
     setAccoesIniciais: function() {
-        estacaoController.estacaoActual = 0;
-        ecraAnterior = radioController;
-        
-        estacaoController.updateInterface();
         HUD.accoes.clickOK = function() {
             //TODO: Regressar a RADIO (colocando a estacao selecionada no ecra RADIO, mas isso eh o menos)
         }
