@@ -14,7 +14,7 @@ var estacaoController = {
     setAccoesIniciais: function() {
         estacaoController.updateInterface();
         HUD.accoes.clickOK = function() {
-            
+            //TODO: Regressar a RADIO (colocando a estacao selecionada no ecra RADIO, mas isso eh o menos)
         }
 
         HUD.accoes.scroll = function(e) {
@@ -29,8 +29,9 @@ var estacaoController = {
         }
 
         HUD.accoes.clickBack = function() {
-            $('#estacoes-estacao li:eq('+(estacaoController.estacaoActual)+')').removeClass('ESTACAO-estacao-seleccionada');
-            HUD.setAccoesPadrao();
+           /* $('#estacoes-estacao li:eq('+(estacaoController.estacaoActual)+')').removeClass('ESTACAO-estacao-seleccionada');
+            HUD.setAccoesPadrao();*/
+            //TODO: Regressar a RADIO
         }
     },
 
