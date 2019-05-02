@@ -1,9 +1,16 @@
 /* CSS específico do ecrã */
 /* usar prefixo adequado para todas as classes */
 
-p, b {
-    padding-left: 10px;
+
+#ecra-HELP1 ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+#ecra-HELP1 li, #ecra-HELP1 b {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16pt;
     color: white;
-  }
+    list-style-type: none;
+    line-height: 25pt;
+}
