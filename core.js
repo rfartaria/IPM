@@ -29,6 +29,7 @@ var HUD = {
     
     turnOFF: function() {
         HUD.setUp();
+        HUD.setEcraInactivo();
         HUD.updateInterface();
     },
 

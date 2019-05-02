@@ -14,8 +14,8 @@ var radioController = {
     setUp: function(){
         //Tal como em core, uma lista de dois elementos que guarda os controladores de frequencia e estacao
         radioController.opcoesControllers = [ estacaoController, undefined ];
-        // radioController.opcaoActual = 0;
-        radioController.estacaoAtual = "";
+        radioController.opcaoActual = undefined;
+        //radioController.estacaoAtual = "";
     },
 
     //Regista as accoes iniciais
