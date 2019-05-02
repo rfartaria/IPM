@@ -23,8 +23,12 @@ var radioController = {
         // radioController.setUp();
         radioController.updateInterface();
         HUD.accoes.clickOK = function() {
+            if(radioController.opcaoActual == 2){
+                radioController.estacaoAtual = "";
+                radioController.updateInterface();
+            }
             if (HUD.ecraActual) {
-                estacaoController.loadOwnEcraView();
+                radioController.opcoesControllers[radioController.opcaoActual].loadOwnEcraView();
                 radioController.opcoesControllers[radioController.opcaoActual].setAccoesIniciais();
                 //o ecra de frequencias nao serah implementado
             }
@@ -34,9 +38,9 @@ var radioController = {
             var scrollDirectionUP = e.deltaY < 0;
             if (HUD.ecraActual) {
                 if (scrollDirectionUP) {
-                    radioController.previousEstacao();
+                    radioController.previousOpcao();
                 } else {
-                    radioController.nextEstacao();
+                    radioController.nextOpcao();
                 }
             }
         }
@@ -75,6 +79,8 @@ var radioController = {
         aTirar.removeClass('RADIO-opcao-seleccionada');
         aTirar = $('#opcoes-radio li:eq(1)');
         aTirar.removeClass('RADIO-opcao-seleccionada');
+        aTirar = $('#opcoes-radio li:eq(2)');
+        aTirar.removeClass('RADIO-opcao-seleccionada');
         
         var aSelecionar = $('#opcoes-radio li:eq('+(radioController.opcaoActual)+')');
         aSelecionar.addClass('RADIO-opcao-seleccionada');
@@ -84,14 +90,18 @@ var radioController = {
 
     //FUNCOES
     //nestes casos, a lista nunca mudaria no numero de opcoes, mesmo na implementacao completa -TV
-    previousEstacao: function() {
-        radioController.opcaoActual = 0;
-        radioController.updateInterface();
+    previousOpcao: function() {
+        if(radioController.opcaoActual >= 1){
+            radioController.opcaoActual--;
+            radioController.updateInterface();
+        }
     },
 
-    nextEstacao: function() {
-        radioController.opcaoActual = 1;
-        radioController.updateInterface();
+    nextOpcao: function() {
+        if(radioController.opcaoActual <= 1){
+            radioController.opcaoActual++;
+            radioController.updateInterface();
+        }
     }
 
 }
