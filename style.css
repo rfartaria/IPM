@@ -67,6 +67,12 @@
     padding-top: 60px;
 }
 
+.estado-ecra {
+	font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    color: white;
+}
+
 html { 
     background: url(img/driving_03.png) no-repeat center center fixed; 
     -webkit-background-size: cover;
