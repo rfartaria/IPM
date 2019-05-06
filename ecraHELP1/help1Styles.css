@@ -14,3 +14,11 @@
     list-style-type: none;
     line-height: 25pt;
 }
+
+#ecra-HELP1 img {
+  opacity: 0.5;
+  display: block;
+  margin: auto;
+  padding-top: 20px;
+  height: 150px;
+}
