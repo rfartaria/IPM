@@ -80,6 +80,11 @@ var HUD = {
                     radioController.setAccoesIniciais();
                     return;
                 }
+                if(HUD.ecraActual.id == "GPS"){
+                    HUD.setEcraActivo();
+                    gpsController.setAccoesIniciais();
+                    return;
+                }
                 //TODO: os outros ecrãs
             }
         }
