@@ -81,4 +81,8 @@ html {
     background-size: cover;
   }
 
-  
+ .opcao-seleccionada {
+    color: rgba(70, 57, 255, 0.61);
+    font-weight: bold;
+    background: rgba(255,255,255,0.4)
+}
