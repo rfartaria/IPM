@@ -6,17 +6,17 @@ var gpsController = {
     css: "ecraGPS/gpsStyles.css",
     iconHtml: `<div class="hud-icon" id="icon-ecra-GPS"><i class="fas fa-globe-europe" style="font-size: 36px; line-height: 70px;"></i></div>`,
 
-    listaLetras: ["<i class='fas fa-check' style='font-size: 14pt;'></i>","_","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"],
+    listaLetras: ["<i class='fas fa-check' style='font-size: 14pt;'></i>","_","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"],
     indiceInicial: 0,
     indiceFim: 6,
     numElem: 7,
 
-    listaSugestoes: ["Rua das Flores", "Rua dos Diamantes", "Avenida Avenido", "Largo do Patos", "Rua Feliz", "Avenida da Igualdade"],
+    listaSugestoes: ["RUA DAS FLORES","RUA DOS DIAMANTES","AVENIDA AVENIDO","LARGO DOS PATOS","RUA FELIZ","AVENIDA DA IGUALDADE"],
     nSugestoes : 0,
 
     setAccoesIniciais: function() {
         var aSelecionar = $('#alfabeto li:eq(0)');
-        aSelecionar.addClass("selecionado");
+        aSelecionar.addClass("opcao-seleccionada");
         //SCROLL
         HUD.accoes.scroll = function(e) {
             var scrollDirectionUP = e.deltaY < 0;
@@ -33,7 +33,7 @@ var gpsController = {
             //Se a barra estiver vazia, sair do ecra
             if($(".barra_de_texto").text() == "|"){
                 var aRemover = $('#alfabeto li:eq(0)');
-                aRemover.removeClass("selecionado");
+                aRemover.removeClass("opcao-seleccionada");
             // $('#opcoes-radio li:eq('+(radioController.opcaoActual)+')').removeClass('RADIO-opcao-seleccionada');
             /*radioController.opcaoActual = undefined;
             radioController.updateInterface();*/
@@ -54,10 +54,13 @@ var gpsController = {
     },
 
     atualizaSugestao: function(){
-        var texto = $(".barra_de_texto").text();
-        for(var i = 0; i < gpsController.listaSugestoes.length; i++){
+        var texto = $(".barra_de_texto").text()
+        texto = texto.substring(0, texto.length - 1);
+        for(var i = 0; i < gpsController.listaSugestoes.length && gpsController.nSugestoes < 4; i++){
             if(gpsController.listaSugestoes[i].includes(texto)){
-                
+                document.getElementById("sugestao"+(gpsController.nSugestoes+1)).innerHTML = 
+                gpsController.listaSugestoes[i];
+                gpsController.nSugestoes++;
             }
         }
     },

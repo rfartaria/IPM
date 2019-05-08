@@ -9,18 +9,23 @@
 
 .barra_de_texto {
     float: left;
-    width: 30%;
+    width: 40%;
     background-color: slategray;
+   /* padding: 5pt*/
 }
 
 .sugestoes {
     float: left;
-    width: 30%;
+    width: 40%;
+    /*padding: 10pt*/
+}
+
+.escrita{
+    float: left;
+    width: 20%;
 }
 
 #alfabeto li {
     list-style-type: none;
-    float: right;
-    width: 70%;
 }
 
