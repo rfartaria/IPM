@@ -53,6 +53,10 @@ var gpsController = {
             var letra = gpsController.listaLetras[gpsController.indiceInicial];
 
             if(gpsController.listaLetras[gpsController.indiceInicial] == "<i class='fas fa-check' style='font-size: 14pt;'></i>"){
+                var aRemover = $('#alfabeto li:eq(0)');
+                aRemover.removeClass("opcao-seleccionada");
+                var aSelecionar = $('#lista-sugestoes li:eq('+gpsController.sugestaoSelecionada+')');
+                aSelecionar.addClass("opcao-seleccionada");
                 gpsController.setAccoesSugestoes();
             }else{
                 gpsController.adicionaLetra(letra);
@@ -165,18 +169,23 @@ var gpsController = {
         }
         //VOLTAR
         HUD.accoes.clickBack = function() {
+            var aRemover = $('#lista-sugestoes li:eq('+(gpsController.sugestaoSelecionada)+')');
+            aRemover.removeClass('opcao-seleccionada');
             gpsController.setAccoesIniciais();
         }
         //OK
         HUD.accoes.clickOK = function() {
-            //TODO
+            var aTirar = $('#lista-sugestoes li:eq('+(gpsController.sugestaoSelecionada)+')');
+            aTirar.removeClass('opcao-seleccionada');
 
+            HUD.setEcraInactivo();
+            HUD.setAccoesPadrao();
             
         }
     },
 
     previousOpcao: function(){
-        if(gpsController.sugestaoSelecionada != gpsController.nSugestoes){
+        if(gpsController.sugestaoSelecionada != 0){
             gpsController.sugestaoSelecionada--;
             var aRemover = $('#lista-sugestoes li:eq('+(gpsController.sugestaoSelecionada+1)+')');
             aRemover.removeClass('opcao-seleccionada');
@@ -186,7 +195,7 @@ var gpsController = {
     },
 
     nextOpcao: function(){
-        if(gpsController.sugestaoSelecionada != 0){
+        if(gpsController.sugestaoSelecionada != gpsController.nSugestoes-1){
             gpsController.sugestaoSelecionada++;
             var aRemover = $('#lista-sugestoes li:eq('+(gpsController.sugestaoSelecionada-1)+')');
             aRemover.removeClass('opcao-seleccionada');
