@@ -48,7 +48,7 @@ var gpsController = {
         HUD.accoes.clickOK = function() {
             var letra = gpsController.listaLetras[gpsController.indiceInicial];
             gpsController.adicionaLetra(letra);
-
+            
             gpsController.atualizaSugestao();
         }
     },
@@ -75,7 +75,7 @@ var gpsController = {
 
     limpaSugestoes: function(){
         for(var i = 0; i < 5; i++){
-            var aRetirar = $('#lista-sugestoes li:eq('+(i+1)+')');
+            var aRetirar = $('#lista-sugestoes li:eq('+i+')');
             aRetirar.text("");
         }
         gpsController.nSugestoes = 0;
@@ -84,8 +84,12 @@ var gpsController = {
     adicionaLetra: function(l){
         //apagar o | 
         gpsController.apagaChar();
-        //vai buscar class barra e adiciona ao fim a letra selecionada
-        $(".barra_de_texto").append(l + "|");
+        if(l == "_"){
+            $(".barra_de_texto").append(" |");
+        }else{
+            //vai buscar class barra e adiciona ao fim a letra selecionada
+            $(".barra_de_texto").append(l + "|");
+        }
     },
 
     //apenas apaga o ultimo char na barra de texto.
