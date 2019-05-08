@@ -1,31 +1,13 @@
 /* CSS específico do ecrã */
 /* usar prefixo adequado para todas as classes */
 
-/*.selecionado {
+.RADIO-opcao-seleccionada {
     color: rgba(70, 57, 255, 0.61);
     font-weight: bold;
     background: rgba(255,255,255,0.4)
-}*/
-
-.barra_de_texto {
-    float: left;
-    width: 40%;
-    background-color: slategray;
-   /* padding: 5pt*/
 }
 
-.sugestoes {
-    float: left;
-    width: 40%;
-    /*padding: 10pt*/
-}
-
-.escrita{
-    float: left;
-    width: 20%;
-}
-
-#alfabeto li {
+#opcoes-radio li {
     list-style-type: none;
+    line-height: 35pt;
 }
-
