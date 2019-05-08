@@ -52,7 +52,8 @@ var gpsController = {
         HUD.accoes.clickOK = function() {
             var letra = gpsController.listaLetras[gpsController.indiceInicial];
 
-            if(gpsController.listaLetras[gpsController.indiceInicial] == "<i class='fas fa-check' style='font-size: 14pt;'></i>"){
+            if(gpsController.listaLetras[gpsController.indiceInicial] == "<i class='fas fa-check' style='font-size: 14pt;'></i>" &&
+                nSugestoes > 0){
                 var aRemover = $('#alfabeto li:eq(0)');
                 aRemover.removeClass("opcao-seleccionada");
                 var aSelecionar = $('#lista-sugestoes li:eq('+gpsController.sugestaoSelecionada+')');
@@ -62,8 +63,6 @@ var gpsController = {
                 gpsController.adicionaLetra(letra);
                 gpsController.atualizaSugestao();
             }
-
-            
         }
     },
 
@@ -71,18 +70,20 @@ var gpsController = {
         gpsController.limpaSugestoes();
         var texto = $(".barra_de_texto").text();
         texto = texto.substring(0, texto.length - 1);
-        for(var i = 0; i < gpsController.listaSugestoes.length && gpsController.nSugestoes < 4; i++){
-            if(gpsController.listaSugestoes[i].startsWith(texto)){
-                document.getElementById("sugestao"+(gpsController.nSugestoes+1)).innerHTML = 
-                gpsController.listaSugestoes[i];
-                gpsController.nSugestoes++;
-            }  
-        }
-        for(var i = 0; i < gpsController.listaSugestoes.length && gpsController.nSugestoes < 4; i++){
-            if(!gpsController.listaSugestoes[i].startsWith(texto) && gpsController.listaSugestoes[i].includes(texto)){
-                document.getElementById("sugestao"+(gpsController.nSugestoes+1)).innerHTML = 
-                gpsController.listaSugestoes[i];
-                gpsController.nSugestoes++;
+        if(texto !=""){
+            for(var i = 0; i < gpsController.listaSugestoes.length && gpsController.nSugestoes < 4; i++){
+                if(gpsController.listaSugestoes[i].startsWith(texto)){
+                    document.getElementById("sugestao"+(gpsController.nSugestoes+1)).innerHTML = 
+                    gpsController.listaSugestoes[i];
+                    gpsController.nSugestoes++;
+                }  
+            }
+            for(var i = 0; i < gpsController.listaSugestoes.length && gpsController.nSugestoes < 4; i++){
+                if(!gpsController.listaSugestoes[i].startsWith(texto) && gpsController.listaSugestoes[i].includes(texto)){
+                    document.getElementById("sugestao"+(gpsController.nSugestoes+1)).innerHTML = 
+                    gpsController.listaSugestoes[i];
+                    gpsController.nSugestoes++;
+                }
             }
         }
     },
