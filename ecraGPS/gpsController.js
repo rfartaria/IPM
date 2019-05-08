@@ -54,15 +54,24 @@ var gpsController = {
     },
 
     atualizaSugestao: function(){
+        gpsController.limpaSugestoes();
         var texto = $(".barra_de_texto").text()
         texto = texto.substring(0, texto.length - 1);
         for(var i = 0; i < gpsController.listaSugestoes.length && gpsController.nSugestoes < 4; i++){
-            if(gpsController.listaSugestoes[i].includes(texto)){
+            if(gpsController.listaSugestoes[i].startsWith(texto)){
                 document.getElementById("sugestao"+(gpsController.nSugestoes+1)).innerHTML = 
                 gpsController.listaSugestoes[i];
                 gpsController.nSugestoes++;
             }
         }
+    },
+
+    limpaSugestoes: function(){
+        for(var i = 0; i < 4; i++){
+            var aRetirar = $('#lista-sugestoes li:eq('+(i+1)+')');
+            aRetirar.text("");
+        }
+        gpsController.nSugestoes = 0;
     },
 
     adicionaLetra: function(l){
