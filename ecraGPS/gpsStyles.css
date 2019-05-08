@@ -7,6 +7,15 @@
     background: rgba(255,255,255,0.4)
 }
 
+.barra_de_texto {
+    float: left;
+    width: 30%;
+    background-color: slategray;
+}
+
 #alfabeto li {
     list-style-type: none;
+    float: right;
+    width: 70%;
 }
+

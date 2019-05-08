@@ -15,6 +15,7 @@ var gpsController = {
     setAccoesIniciais: function() {
         var aSelecionar = $('#alfabeto li:eq(0)');
         aSelecionar.addClass("selecionado");
+        //SCROLL
         HUD.accoes.scroll = function(e) {
             var scrollDirectionUP = e.deltaY < 0;
             if (HUD.ecraActual) {
@@ -25,15 +26,45 @@ var gpsController = {
                 }
             }
         }
+        //VOLTAR
         HUD.accoes.clickBack = function() {
-            var aRemover = $('#alfabeto li:eq(0)');
-            aRemover.removeClass("selecionado");
+            //Se a barra estiver vazia, sair do ecra
+            if($(".barra_de_texto").text() == "|"){
+                var aRemover = $('#alfabeto li:eq(0)');
+                aRemover.removeClass("selecionado");
             // $('#opcoes-radio li:eq('+(radioController.opcaoActual)+')').removeClass('RADIO-opcao-seleccionada');
             /*radioController.opcaoActual = undefined;
             radioController.updateInterface();*/
-            HUD.setEcraInactivo();
-            HUD.setAccoesPadrao();
+                HUD.setEcraInactivo();
+                HUD.setAccoesPadrao();
+            }else{
+                gpsController.apagaLetra();
+                $(".barra_de_texto").append("|");
+            }
         }
+        //OK
+        HUD.accoes.clickOK = function() {
+            var letra = gpsController.listaLetras[gpsController.indiceInicial] ;
+
+            //apagar o | 
+            gpsController.apagaChar();
+
+            //vai buscar class barra e adiciona ao fim a letra selecionada
+            $(".barra_de_texto").append(letra + "|");
+        }
+    },
+
+    //apenas apaga o ultimo char na barra de texto.
+    apagaChar: function(){
+        var texto = $(".barra_de_texto").text();
+        texto = texto.substring(0, texto.length - 1);
+        $(".barra_de_texto").text(texto);
+    },
+
+    //apaga o "|" e a letra apenas.
+    apagaLetra: function(){
+        gpsController.apagaChar();
+        gpsController.apagaChar();
     },
 
     previousLetra: function(){
