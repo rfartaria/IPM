@@ -99,14 +99,8 @@ var HUD = {
     
         HUD.accoes.clickBack = function() {
             if (HUD.ecraActual) {
-                if (HUD.ecraActual.id == "HELP1") {
-                    HUD.nextEcra();
-                    return;
-                }
-                if (HUD.ecraActual.id == "HELP2") {
-                    HUD.loadEcrasPadrao();
-                    return;
-                }
+                HUD.loadEcrasPadrao();
+                return;
             }
         }
     
