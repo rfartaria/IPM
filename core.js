@@ -78,6 +78,14 @@ var HUD = {
                     HUD.setEcraActivo();
                     radioController.opcaoActual = 0;
                     radioController.setAccoesIniciais();
+                    radioController.updateInterface();
+                    return;
+                }
+                if (HUD.ecraActual.id == "CHAMADAS") {
+                    HUD.setEcraActivo();
+                    chamadasController.opcaoActual = 0;
+                    chamadasController.setAccoesIniciais();
+                    chamadasController.updateInterface();
                     return;
                 }
                 if(HUD.ecraActual.id == "GPS"){
