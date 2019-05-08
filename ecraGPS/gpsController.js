@@ -14,7 +14,7 @@ var gpsController = {
     listaSugestoes: ["RUA DAS FLORES","RUA DOS DIAMANTES","AVENIDA AVENIDO","LARGO DOS PATOS","RUA FELIZ","AVENIDA DA IGUALDADE"],
     nSugestoes : 0,
 
-    suegstaoSelecionada: 0,
+    sugestaoSelecionada: 0,
 
     setAccoesIniciais: function() {
         var aSelecionar = $('#alfabeto li:eq(0)');
@@ -53,7 +53,7 @@ var gpsController = {
             var letra = gpsController.listaLetras[gpsController.indiceInicial];
 
             if(gpsController.listaLetras[gpsController.indiceInicial] == "<i class='fas fa-check' style='font-size: 14pt;'></i>"){
-                
+                gpsController.setAccoesSugestoes();
             }else{
                 gpsController.adicionaLetra(letra);
                 gpsController.atualizaSugestao();
@@ -151,6 +151,8 @@ var gpsController = {
     },
     
     setAccoesSugestoes: function(){
+        var aSelecionar = $('#lista-sugestoes li:eq('+gpsController.sugestaoSelecionada+')');
+        aSelecionar.addClass('opcao-seleccionada');
         HUD.accoes.scroll = function(e) {
             var scrollDirectionUP = e.deltaY < 0;
             if (HUD.ecraActual) {
@@ -174,7 +176,23 @@ var gpsController = {
     },
 
     previousOpcao: function(){
-        
+        if(gpsController.sugestaoSelecionada != gpsController.nSugestoes){
+            gpsController.sugestaoSelecionada--;
+            var aRemover = $('#lista-sugestoes li:eq('+(gpsController.sugestaoSelecionada+1)+')');
+            aRemover.removeClass('opcao-seleccionada');
+            var aSelecionar = $('#lista-sugestoes li:eq('+gpsController.sugestaoSelecionada+')');
+            aSelecionar.addClass('opcao-seleccionada');
+        }
+    },
+
+    nextOpcao: function(){
+        if(gpsController.sugestaoSelecionada != 0){
+            gpsController.sugestaoSelecionada++;
+            var aRemover = $('#lista-sugestoes li:eq('+(gpsController.sugestaoSelecionada-1)+')');
+            aRemover.removeClass('opcao-seleccionada');
+            var aSelecionar = $('#lista-sugestoes li:eq('+gpsController.sugestaoSelecionada+')');
+            aSelecionar.addClass('opcao-seleccionada');
+        }
     }
 }
 
