@@ -34,6 +34,8 @@ var escritaController = {
             if($(".barra_de_texto").text() == "|"){
                 var aRemover = $('#alfabeto li:eq(0)');
                 aRemover.removeClass("opcao-seleccionada");
+                escritaController.indiceInicial = 0;
+                escritaController.indiceFim = 0;
             // $('#opcoes-radio li:eq('+(radioController.opcaoActual)+')').removeClass('RADIO-opcao-seleccionada');
             /*radioController.opcaoActual = undefined;
             radioController.updateInterface();*/
