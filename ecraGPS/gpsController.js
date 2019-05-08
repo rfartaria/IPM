@@ -14,7 +14,7 @@ var gpsController = {
     listaSugestoes: ["RUA DAS FLORES","RUA DOS DIAMANTES","AVENIDA AVENIDO","LARGO DOS PATOS","RUA FELIZ","AVENIDA DA IGUALDADE"],
     nSugestoes : 0,
 
-    suegstaoSelecionada: 0,
+    sugestaoSelecionada: 0,
 
     setAccoesIniciais: function() {
         var aSelecionar = $('#alfabeto li:eq(0)');
@@ -53,7 +53,11 @@ var gpsController = {
             var letra = gpsController.listaLetras[gpsController.indiceInicial];
 
             if(gpsController.listaLetras[gpsController.indiceInicial] == "<i class='fas fa-check' style='font-size: 14pt;'></i>"){
-                
+                var aRemover = $('#alfabeto li:eq(0)');
+                aRemover.removeClass("opcao-seleccionada");
+                var aSelecionar = $('#lista-sugestoes li:eq(0)');
+                aSelecionar.addClass("opcao-seleccionada");
+                gpsController.setAccoesSugestoes();
             }else{
                 gpsController.adicionaLetra(letra);
                 gpsController.atualizaSugestao();
@@ -167,8 +171,11 @@ var gpsController = {
         }
         //OK
         HUD.accoes.clickOK = function() {
-            //TODO
+            var aTirar = $('#lista-sugestoes li:eq('+(gpsController.sugestaoSelecionada)+')');
+            aTirar.removeClass('opcao-seleccionada');
 
+            HUD.setEcraInactivo();
+            HUD.setAccoesPadrao();
             
         }
     },
