@@ -7,10 +7,12 @@ var gpsController = {
     iconHtml: `<div class="hud-icon" id="icon-ecra-GPS"><i class="fas fa-globe-europe" style="font-size: 36px; line-height: 70px;"></i></div>`,
 
     listaLetras: ["<i class='fas fa-check' style='font-size: 14pt;'></i>","_","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"],
-
     indiceInicial: 0,
     indiceFim: 6,
     numElem: 7,
+
+    listaSugestoes: ["Rua das Flores", "Rua dos Diamantes", "Avenida Avenido", "Largo do Patos", "Rua Feliz", "Avenida da Igualdade"],
+    nSugestoes : 0,
 
     setAccoesIniciais: function() {
         var aSelecionar = $('#alfabeto li:eq(0)');
@@ -44,14 +46,27 @@ var gpsController = {
         }
         //OK
         HUD.accoes.clickOK = function() {
-            var letra = gpsController.listaLetras[gpsController.indiceInicial] ;
+            var letra = gpsController.listaLetras[gpsController.indiceInicial];
+            gpsController.adicionaLetra(letra);
 
-            //apagar o | 
-            gpsController.apagaChar();
-
-            //vai buscar class barra e adiciona ao fim a letra selecionada
-            $(".barra_de_texto").append(letra + "|");
+            gpsController.atualizaSugestao();
         }
+    },
+
+    atualizaSugestao: function(){
+        var texto = $(".barra_de_texto").text();
+        for(var i = 0; i < gpsController.listaSugestoes.length; i++){
+            if(gpsController.listaSugestoes[i].includes(texto)){
+                
+            }
+        }
+    },
+
+    adicionaLetra: function(l){
+        //apagar o | 
+        gpsController.apagaChar();
+        //vai buscar class barra e adiciona ao fim a letra selecionada
+        $(".barra_de_texto").append(l + "|");
     },
 
     //apenas apaga o ultimo char na barra de texto.

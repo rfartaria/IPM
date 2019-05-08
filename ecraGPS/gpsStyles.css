@@ -1,16 +1,21 @@
 /* CSS específico do ecrã */
 /* usar prefixo adequado para todas as classes */
 
-.selecionado {
+/*.selecionado {
     color: rgba(70, 57, 255, 0.61);
     font-weight: bold;
     background: rgba(255,255,255,0.4)
-}
+}*/
 
 .barra_de_texto {
     float: left;
     width: 30%;
     background-color: slategray;
+}
+
+.sugestoes {
+    float: left;
+    width: 30%;
 }
 
 #alfabeto li {
