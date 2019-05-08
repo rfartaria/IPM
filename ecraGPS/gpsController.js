@@ -42,14 +42,22 @@ var gpsController = {
             }else{
                 gpsController.apagaLetra();
                 $(".barra_de_texto").append("|");
+
+                gpsController.atualizaSugestao();
             }
         }
         //OK
         HUD.accoes.clickOK = function() {
             var letra = gpsController.listaLetras[gpsController.indiceInicial];
-            gpsController.adicionaLetra(letra);
 
-            gpsController.atualizaSugestao();
+            if(gpsController.listaLetras[gpsController.indiceInicial] == "<i class='fas fa-check' style='font-size: 14pt;'></i>"){
+
+            }else{
+                gpsController.adicionaLetra(letra);
+                gpsController.atualizaSugestao();
+            }
+
+            
         }
     },
 
@@ -75,7 +83,7 @@ var gpsController = {
 
     limpaSugestoes: function(){
         for(var i = 0; i < 5; i++){
-            var aRetirar = $('#lista-sugestoes li:eq('+(i+1)+')');
+            var aRetirar = $('#lista-sugestoes li:eq('+(i)+')');
             aRetirar.text("");
         }
         gpsController.nSugestoes = 0;
@@ -95,7 +103,7 @@ var gpsController = {
         $(".barra_de_texto").text(texto);
     },
 
-    //apaga o "|" e a letra apenas.
+    //apaga o "|" e a letra apenas. Dever ser escrito algo a seguir de imediato
     apagaLetra: function(){
         gpsController.apagaChar();
         gpsController.apagaChar();
