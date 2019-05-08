@@ -53,7 +53,11 @@ var chamadasController = {
     },
 
     updateInterface: function() {
-        $("#CHAMADAS-opcoes li").eq(chamadasController.opcaoActual).addClass("opcao-seleccionada");
+        if (typeof chamadasController.opcaoActual === 'undefined')
+            $("#CHAMADAS-opcoes li").removeClass("opcao-seleccionada");
+        else
+            $("#CHAMADAS-opcoes li").eq(chamadasController.opcaoActual).addClass("opcao-seleccionada");
+            
     },
 
     nextOption: function() {

@@ -65,9 +65,17 @@ class contactosControllerBase {
         if (start<0) start += self.contactos.length;
         var displayed = [];
         var i = 0;
-        for (i=start; i<start+self.linhas; i++)
-            displayed.push(self.contactos[i % self.contactos.length]);
-        $("#CONTACTOS-opcoes").html(displayed.map(o => '<li>'+o+'</li>'));
+        for (i=start; i<start+self.linhas; i++) {
+            var j = i % self.contactos.length;
+            var k = (i-1) % self.contactos.length;
+            if (k<0) k += self.contactos.length;
+            if (self.contactos[j].substring(0,1) == self.contactos[k].substring(0,1)) {
+                displayed.push("<li class='li-0'>"+self.contactos[j]+"</li>");
+            } else {
+                displayed.push("<li class='li-"+self.contactos[j].substring(0,1)+"'>"+self.contactos[j]+"</li>");
+            }
+        }
+        $("#CONTACTOS-opcoes").html(displayed);
         $("#CONTACTOS-opcoes li").eq(middle).addClass('opcao-seleccionada');
     }
 
@@ -77,8 +85,8 @@ class contactosControllerBase {
         if (HUD.ecraActual) {
             $.get(this.url, function(data) {
                 // breadcrumbs
-                var ndata = data.replace(/CHAMADAS > CONTACTOS/, self.breadCrumbs);
-                $("#hud-screen-container").html(ndata);
+                $("#hud-screen-container").html(data);
+                $("div.breadcrumbs").html(self.breadCrumbs);
                 self.setDisplayedOptions();
                 self.updateInterface();
             })
@@ -100,7 +108,7 @@ var contactos_todos = [
     "Paulo Melo Rodrigues",
     "Eduarda Silva Correia",
     "Clara Lima Fernandes",
-    "&Aacute;gatha Lima Cardoso",
+    "Agatha Lima Cardoso",
     "Julieta Carvalho Goncalves",
     "Isabela Azevedo Alves",
     "Aline Pereira Cunha",
@@ -123,8 +131,8 @@ var contactos_todos = [
 var contactos_favoritos = contactos_todos.slice(0,7);
 contactos_favoritos.sort();
 
-var contactosFavoritosController = new contactosControllerBase(contactos_favoritos, "CHAMADAS > CONTACTOS FAVORITOS");
+var contactosFavoritosController = new contactosControllerBase(contactos_favoritos, "<span>CHAMADAS</span> > <span>CONTACTOS FAVORITOS</span>");
 
 contactos_todos.sort();
-var contactosTodosController = new contactosControllerBase(contactos_todos, "CHAMADAS > TODOS OS CONTACTOS");
+var contactosTodosController = new contactosControllerBase(contactos_todos, "<span>CHAMADAS</span> > <span>TODOS OS CONTACTOS</span>");
 

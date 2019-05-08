@@ -1,3 +1,34 @@
 /* CSS específico do ecrã */
 /* usar prefixo adequado para todas as classes */
 
+#CONTACTOS-opcoes {
+    list-style-type: none;
+}
+
+.li-A:before { content: 'A '; color: orange; }
+.li-B:before { content: 'B '; color: orange; }
+.li-C:before { content: 'C '; color: orange; }
+.li-D:before { content: 'D '; color: orange; }
+.li-E:before { content: 'E '; color: orange; }
+.li-F:before { content: 'F '; color: orange; }
+.li-G:before { content: 'G '; color: orange; }
+.li-H:before { content: 'H '; color: orange; }
+.li-I:before { content: 'I '; color: orange; }
+.li-J:before { content: 'J '; color: orange; }
+.li-K:before { content: 'K '; color: orange; }
+.li-L:before { content: 'L '; color: orange; }
+.li-M:before { content: 'M '; color: orange; }
+.li-N:before { content: 'N '; color: orange; }
+.li-O:before { content: 'O '; color: orange; }
+.li-P:before { content: 'P '; color: orange; }
+.li-Q:before { content: 'Q '; color: orange; }
+.li-R:before { content: 'R '; color: orange; }
+.li-S:before { content: 'S '; color: orange; }
+.li-T:before { content: 'T '; color: orange; }
+.li-U:before { content: 'U '; color: orange; }
+.li-V:before { content: 'V '; color: orange; }
+.li-W:before { content: 'W '; color: orange; }
+.li-X:before { content: 'X '; color: orange; }
+.li-Y:before { content: 'Y '; color: orange; }
+.li-Z:before { content: 'Z '; color: orange; }
+.li-0:before { content: '_ '; color: rgba(255, 255, 255, 0); }

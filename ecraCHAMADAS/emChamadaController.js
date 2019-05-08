@@ -38,6 +38,7 @@ var emChamadaController = {
         if (HUD.ecraActual) {
             $.get(this.url, function(data) {
                 $("#hud-screen-container").html(data);
+                $("div.breadcrumbs").html($("div.breadcrumbs").html()+" > <span>EM CHAMDADA</span>")
                 if (emChamadaController.contacto)
                     $("#contacto_a_falar").html(emChamadaController.contacto);
                 emChamadaController.updateInterface();
