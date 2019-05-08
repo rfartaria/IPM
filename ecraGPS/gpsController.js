@@ -1,4 +1,4 @@
-// controlador do ecrã GPS
+// controlador do ecrã de GPS
 
 var gpsController = {
     id: "GPS",
@@ -6,100 +6,103 @@ var gpsController = {
     css: "ecraGPS/gpsStyles.css",
     iconHtml: `<div class="hud-icon" id="icon-ecra-GPS"><i class="fas fa-globe-europe" style="font-size: 36px; line-height: 70px;"></i></div>`,
 
-    listaLetras: ["<i class='fas fa-check' style='font-size: 14pt;'></i>","_","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"],
+    destinoAtual: undefined,
+    opcaoActual: undefined,
+    opcoesControllers: [],
 
-    indiceInicial: 0,
-    indiceFim: 6,
-    numElem: 7,
+    //Coloca as variaveis iniciais (o acima devia faze-lo?)
+    setUp: function(){
+        //Tal como em core, uma lista de dois elementos que guarda os controladores de frequencia e estacao
+        gpsController.opcoesControllers = [ undefined, escritaController ];
+        gpsController.opcaoActual = undefined;
+        //gpsController.destinoAtual = "";
+    },
 
+    //Regista as accoes iniciais
     setAccoesIniciais: function() {
-        var aSelecionar = $('#alfabeto li:eq(0)');
-        aSelecionar.addClass("selecionado");
-        //SCROLL
+        // gpsController.setUp();
+        HUD.accoes.clickOK = function() {
+            if(gpsController.opcaoActual == 2){
+                gpsController.destinoAtual = "Nada";
+                gpsController.updateInterface();
+            }
+            if (HUD.ecraActual) {
+                gpsController.opcoesControllers[gpsController.opcaoActual].loadOwnEcraView();
+                //alert("espera ai");
+                gpsController.opcoesControllers[gpsController.opcaoActual].setAccoesIniciais();
+                //o ecra de frequencias nao serah implementado
+            }
+        }
+
         HUD.accoes.scroll = function(e) {
             var scrollDirectionUP = e.deltaY < 0;
             if (HUD.ecraActual) {
                 if (scrollDirectionUP) {
-                    gpsController.previousLetra();
+                    gpsController.previousOpcao();
                 } else {
-                    gpsController.nextLetra();
+                    gpsController.nextOpcao();
                 }
             }
         }
-        //VOLTAR
+
         HUD.accoes.clickBack = function() {
-            //Se a barra estiver vazia, sair do ecra
-            if($(".barra_de_texto").text() == "|"){
-                var aRemover = $('#alfabeto li:eq(0)');
-                aRemover.removeClass("selecionado");
-            // $('#opcoes-radio li:eq('+(radioController.opcaoActual)+')').removeClass('RADIO-opcao-seleccionada');
-            /*radioController.opcaoActual = undefined;
-            radioController.updateInterface();*/
-                HUD.setEcraInactivo();
-                HUD.setAccoesPadrao();
-            }else{
-                gpsController.apagaLetra();
-                $(".barra_de_texto").append("|");
-            }
+            // $('#opcoes-radio li:eq('+(gpsController.opcaoActual)+')').removeClass('opcao-seleccionada');
+            gpsController.opcaoActual = undefined;
+            gpsController.updateInterface();
+            HUD.setEcraInactivo();
+            HUD.setAccoesPadrao();
         }
-        //OK
-        HUD.accoes.clickOK = function() {
-            var letra = gpsController.listaLetras[gpsController.indiceInicial] ;
-
-            //apagar o | 
-            gpsController.apagaChar();
-
-            //vai buscar class barra e adiciona ao fim a letra selecionada
-            $(".barra_de_texto").append(letra + "|");
+    },
+    
+    //Carrega o HTML do proprio ecra
+    loadOwnEcraView: function() {
+        //$("#hud-screen-container").load(opcoesControllers[opcaoActual].url);
+        if (HUD.ecraActual) {
+            $.get(/*gpsController.opcoesControllers[gpsController.opcaoActual]*/gpsController.url, function(data) {
+                $("#hud-screen-container").html(data);
+                //inicializar variaveis eh feito aqui
+                /*gpsController.opcoesControllers = [ escritaController, undefined ];
+                gpsController.opcaoActual = 0;*/
+                gpsController.updateInterface();
+            })
+            .fail(function(){
+                alert("não consegui obter html da view!");
+            });
+        } else {
+            $("#hud-screen-container").html('');
         }
     },
 
-    //apenas apaga o ultimo char na barra de texto.
-    apagaChar: function(){
-        var texto = $(".barra_de_texto").text();
-        texto = texto.substring(0, texto.length - 1);
-        $(".barra_de_texto").text(texto);
+    //Atualiza as selecoes no ecra
+    updateInterface: function() {
+        var aTirar = $('#opcoes-gps li:eq(0)');
+        aTirar.removeClass('opcao-seleccionada');
+        aTirar = $('#opcoes-gps li:eq(1)');
+        aTirar.removeClass('opcao-seleccionada');
+        aTirar = $('#opcoes-gps li:eq(2)');
+        aTirar.removeClass('opcao-seleccionada');
+        
+        var aSelecionar = $('#opcoes-gps li:eq('+(gpsController.opcaoActual)+')');
+        aSelecionar.addClass('opcao-seleccionada');
+
+        $('#GPS-destino-actual').text(gpsController.destinoAtual);
     },
 
-    //apaga o "|" e a letra apenas.
-    apagaLetra: function(){
-        gpsController.apagaChar();
-        gpsController.apagaChar();
-    },
-
-    previousLetra: function(){
-        if(gpsController.indiceInicial == 0){
-            gpsController.indiceInicial = 27;
-        }else{
-            gpsController.indiceInicial--;
-        }
-        if(gpsController.indiceFim == 0){
-            gpsController.indiceFim = 27;
-        }else{
-            gpsController.indiceFim--;
-        }
-        for(var i = 0; i < gpsController.numElem; i++){
-            var aux = i + 1;
-            document.getElementById("letra"+aux).innerHTML = gpsController.listaLetras[(gpsController.indiceInicial+i)%28];
+    //FUNCOES
+    //nestes casos, a lista nunca mudaria no numero de opcoes, mesmo na implementacao completa -TV
+    previousOpcao: function() {
+        if(gpsController.opcaoActual >= 1){
+            gpsController.opcaoActual--;
+            gpsController.updateInterface();
         }
     },
 
-    nextLetra: function(){
-        if(gpsController.indiceInicial == 27){
-            gpsController.indiceInicial = 0;
-        }else{
-            gpsController.indiceInicial++;
-        }
-        if(gpsController.indiceFim == 27){
-            gpsController.indiceFim = 0;
-        }else{
-            gpsController.indiceFim++;
-        }
-        for(var i = 0; i < gpsController.numElem; i++){
-            var aux = i + 1;
-            document.getElementById("letra"+aux).innerHTML = gpsController.listaLetras[(gpsController.indiceInicial+i)%28];
-            //$("#letra"+aux).text(gpsController.listaLetras[gpsController.indiceInicial+i]);
+    nextOpcao: function() {
+        if(gpsController.opcaoActual <= 1){
+            gpsController.opcaoActual++;
+            gpsController.updateInterface();
         }
     }
+
 }
 

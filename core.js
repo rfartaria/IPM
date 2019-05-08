@@ -90,7 +90,9 @@ var HUD = {
                 }
                 if(HUD.ecraActual.id == "GPS"){
                     HUD.setEcraActivo();
+                    gpsController.opcaoActual = 0;
                     gpsController.setAccoesIniciais();
+                    gpsController.updateInterface();
                     return;
                 }
                 //TODO: os outros ecrãs
