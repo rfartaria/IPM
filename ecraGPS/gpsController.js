@@ -11,7 +11,7 @@ var gpsController = {
     indiceFim: 6,
     numElem: 7,
 
-    listaSugestoes: ["RUA DAS FLORES","RUA DOS DIAMANTES","AVENIDA AVENIDO","LARGO DOS PATOS","RUA FELIZ","AVENIDA DA IGUALDADE"],
+    listaSugestoes: ["RUA\xa0DAS\xa0FLORES","RUA\xa0DOS\xa0DIAMANTES","AVENIDA\xa0AVENIDO","LARGO\xa0DOS\xa0PATOS","RUA\xa0FELIZ","AVENIDA\xa0DA\xa0IGUALDADE"],
     nSugestoes : 0,
 
     sugestaoSelecionada: 0,
@@ -100,7 +100,7 @@ var gpsController = {
         //apagar o | 
         gpsController.apagaChar();
         if(l == "_"){
-            $(".barra_de_texto").append(" |");
+            $(".barra_de_texto").append("\xa0|");
         }else{
             //vai buscar class barra e adiciona ao fim a letra selecionada
             $(".barra_de_texto").append(l + "|");
