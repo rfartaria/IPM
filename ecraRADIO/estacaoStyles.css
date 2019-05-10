@@ -7,6 +7,11 @@
     background: rgba(255,255,255,0.4)
 }*/
 
+#estacoes-radio {
+    margin-block-start: 5px;
+    margin-block-end: 5px;
+}
+
 #estacoes-radio li {
     list-style-type: none;
     line-height: 35pt;
@@ -14,5 +19,5 @@
 
 #ecra-ESTACAO {
     padding-left: 15pt;
-    padding-top: 20pt;
+    /*padding-top: 20pt;*/
 }
