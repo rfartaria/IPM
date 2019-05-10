@@ -31,7 +31,7 @@ var escritaController = {
         //VOLTAR
         HUD.accoes.clickBack = function() {
             //Se a barra estiver vazia, sair do ecra
-            if($(".barra_de_texto").text() == "|"){
+            if($("#barra_de_texto").text() == "|"){
                 var aRemover = $('#alfabeto li:eq(0)');
                 aRemover.removeClass("opcao-seleccionada");
                 escritaController.indiceInicial = 0;
@@ -45,7 +45,7 @@ var escritaController = {
                 gpsController.setAccoesIniciais();
             }else{
                 escritaController.apagaLetra();
-                $(".barra_de_texto").append("|");
+                $("#barra_de_texto").append("|");
 
                 escritaController.atualizaSugestao();
             }
@@ -72,7 +72,7 @@ var escritaController = {
 
     atualizaSugestao: function(){
         escritaController.limpaSugestoes();
-        var texto = $(".barra_de_texto").text();
+        var texto = $("#barra_de_texto").text();
         texto = texto.substring(0, texto.length - 1);
         if(texto !=""){
             for(var i = 0; i < escritaController.listaSugestoes.length && escritaController.nSugestoes < 4; i++){
@@ -104,18 +104,18 @@ var escritaController = {
         //apagar o | 
         escritaController.apagaChar();
         if(l == "_"){
-            $(".barra_de_texto").append("\xa0|");
+            $("#barra_de_texto").append("\xa0|");
         }else{
             //vai buscar class barra e adiciona ao fim a letra selecionada
-            $(".barra_de_texto").append(l + "|");
+            $("#barra_de_texto").append(l + "|");
         }
     },
 
     //apenas apaga o ultimo char na barra de texto.
     apagaChar: function(){
-        var texto = $(".barra_de_texto").text();
+        var texto = $("#barra_de_texto").text();
         texto = texto.substring(0, texto.length - 1);
-        $(".barra_de_texto").text(texto);
+        $("#barra_de_texto").text(texto);
     },
 
     //apaga o "|" e a letra apenas. Dever ser escrito algo a seguir de imediato
