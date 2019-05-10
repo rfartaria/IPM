@@ -1,31 +1,29 @@
 /* CSS específico do ecrã */
 /* usar prefixo adequado para todas as classes */
 
-/*.selecionado {
-    color: rgba(70, 57, 255, 0.61);
-    font-weight: bold;
-    background: rgba(255,255,255,0.4)
-}*/
-
-.barra_de_texto {
-    float: left;
-    width: 40%;
+#barra_de_texto {
     background-color: slategray;
-   /* padding: 5pt*/
 }
 
-.sugestoes {
+.column.barra_e_sugestoes {
     float: left;
-    width: 40%;
-    /*padding: 10pt*/
+    width: 70%;
 }
 
-.escrita{
-    float: left;
+.column.escrita{
+    float: right;
     width: 20%;
 }
 
 #alfabeto li {
     list-style-type: none;
+    font-size: 18pt;
+    line-height: 1.6;
 }
+
+/*@media screen and (max-width: 600px) {
+    .column.column.barra_de_texto, .column.sugestoes {
+      width: 100%;
+    }
+}*/
 
