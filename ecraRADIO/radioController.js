@@ -24,7 +24,7 @@ var radioController = {
         radioController.updateInterface();
         HUD.accoes.clickOK = function() {
             if(radioController.opcaoActual == 2){
-                radioController.estacaoAtual = "Nada";
+                radioController.estacaoAtual = "Ra\u0301dio Desligado";
                 radioController.updateInterface();
             }
             if (HUD.ecraActual) {

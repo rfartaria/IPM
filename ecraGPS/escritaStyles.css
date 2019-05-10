@@ -18,7 +18,12 @@
 #alfabeto li {
     list-style-type: none;
     font-size: 18pt;
-    line-height: 1.6;
+    line-height: 1.3;
+}
+
+#lista-sugestoes li {
+    font-size: 18pt;
+    line-height: 1.55;
 }
 
 /*@media screen and (max-width: 600px) {

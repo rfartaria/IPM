@@ -19,7 +19,7 @@ var estacaoController = {
     setAccoesIniciais: function() {
         HUD.accoes.clickOK = function() {
             var estacaoAAlterar = $('#estacoes-estacao li:eq('+(estacaoController.estacaoActual)+')');
-            radioController.estacaoAtual = document.getElementsByClassName('opcao-seleccionada')[0].innerHTML;
+            radioController.estacaoAtual = 'A Reproduzir: '+document.getElementsByClassName('opcao-seleccionada')[0].innerHTML;
             // alert('A reproduzir ' + radioController.estacaoAtual);
             estacaoAAlterar.removeClass('opcao-seleccionada');
             estacaoController.setUp();

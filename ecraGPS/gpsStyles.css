@@ -1,13 +1,7 @@
 /* CSS específico do ecrã */
 /* usar prefixo adequado para todas as classes */
 
-.RADIO-opcao-seleccionada {
-    color: rgba(70, 57, 255, 0.61);
-    font-weight: bold;
-    background: rgba(255,255,255,0.4)
-}
-
-#opcoes-radio li {
+#opcoes-gps li {
     list-style-type: none;
     line-height: 35pt;
 }
