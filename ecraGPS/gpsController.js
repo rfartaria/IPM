@@ -23,7 +23,7 @@ var gpsController = {
         // gpsController.setUp();
         HUD.accoes.clickOK = function() {
             if(gpsController.opcaoActual == 2){
-                gpsController.destinoAtual = "Nada";
+                gpsController.destinoAtual = "Nenhum";
                 gpsController.updateInterface();
             }
             if (HUD.ecraActual) {

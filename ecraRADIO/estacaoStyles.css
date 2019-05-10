@@ -1,11 +1,11 @@
 /* CSS específico do ecrã */
 /* usar prefixo adequado para todas as classes */
 
-.ESTACAO-estacao-seleccionada {
+/*.ESTACAO-estacao-seleccionada {
     color: rgba(70, 57, 255, 0.61);
     font-weight: bold;
     background: rgba(255,255,255,0.4)
-}
+}*/
 
 #estacoes-radio li {
     list-style-type: none;

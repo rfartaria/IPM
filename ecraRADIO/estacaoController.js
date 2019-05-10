@@ -19,9 +19,9 @@ var estacaoController = {
     setAccoesIniciais: function() {
         HUD.accoes.clickOK = function() {
             var estacaoAAlterar = $('#estacoes-estacao li:eq('+(estacaoController.estacaoActual)+')');
-            radioController.estacaoAtual = document.getElementsByClassName('ESTACAO-estacao-seleccionada')[0].innerHTML;
+            radioController.estacaoAtual = document.getElementsByClassName('opcao-seleccionada')[0].innerHTML;
             // alert('A reproduzir ' + radioController.estacaoAtual);
-            estacaoAAlterar.removeClass('ESTACAO-estacao-seleccionada');
+            estacaoAAlterar.removeClass('opcao-seleccionada');
             estacaoController.setUp();
             radioController.loadOwnEcraView();
             radioController.setAccoesIniciais();
@@ -39,7 +39,7 @@ var estacaoController = {
         }
 
         HUD.accoes.clickBack = function() {
-            $('#estacoes-estacao li:eq('+(estacaoController.estacaoActual)+')').removeClass('ESTACAO-estacao-seleccionada');
+            $('#estacoes-estacao li:eq('+(estacaoController.estacaoActual)+')').removeClass('opcao-seleccionada');
             radioController.loadOwnEcraView();
             radioController.setAccoesIniciais();
             radioController.updateInterface();
@@ -65,12 +65,12 @@ var estacaoController = {
     //Atualiza as selecoes no ecra
     updateInterface: function() {
         var aTirar = $('#estacoes-radio li:eq('+(estacaoController.estacaoAnterior)+')');
-        aTirar.removeClass('ESTACAO-estacao-seleccionada');
+        aTirar.removeClass('opcao-seleccionada');
         //Problema curioso: Quando isto corre inicialmente, o addClass abaixo não atualiza imaediatamente. Por exemplo:
         //Ao colocar um alert vazio aqui, ele corre. Mas se nao o fizer, nao corre immediatamente. So se fizer scroll.
         //alert();
         var aSelecionar = $('#estacoes-radio li:eq('+(estacaoController.estacaoActual)+')');
-        aSelecionar.addClass('ESTACAO-estacao-seleccionada');
+        aSelecionar.addClass('opcao-seleccionada');
     },
 
     previousEstacao: function() {

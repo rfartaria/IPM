@@ -46,7 +46,7 @@ var radioController = {
         }
 
         HUD.accoes.clickBack = function() {
-            // $('#opcoes-radio li:eq('+(radioController.opcaoActual)+')').removeClass('RADIO-opcao-seleccionada');
+            // $('#opcoes-radio li:eq('+(radioController.opcaoActual)+')').removeClass('opcao-seleccionada');
             radioController.opcaoActual = undefined;
             radioController.updateInterface();
             HUD.setEcraInactivo();
@@ -76,14 +76,14 @@ var radioController = {
     //Atualiza as selecoes no ecra
     updateInterface: function() {
         var aTirar = $('#opcoes-radio li:eq(0)');
-        aTirar.removeClass('RADIO-opcao-seleccionada');
+        aTirar.removeClass('opcao-seleccionada');
         aTirar = $('#opcoes-radio li:eq(1)');
-        aTirar.removeClass('RADIO-opcao-seleccionada');
+        aTirar.removeClass('opcao-seleccionada');
         aTirar = $('#opcoes-radio li:eq(2)');
-        aTirar.removeClass('RADIO-opcao-seleccionada');
+        aTirar.removeClass('opcao-seleccionada');
         
         var aSelecionar = $('#opcoes-radio li:eq('+(radioController.opcaoActual)+')');
-        aSelecionar.addClass('RADIO-opcao-seleccionada');
+        aSelecionar.addClass('opcao-seleccionada');
 
         $('#RADIO-estacao-actual').text(radioController.estacaoAtual);
     },
