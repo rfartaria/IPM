@@ -50,11 +50,15 @@ class contactosControllerBase {
 
     nextOption() {
         this.opcaoActual = (this.opcaoActual + 1) % this.contactos.length;
+        if (this.opcaoActual < 0) this.opcaoActual += this.contactos.length;
+        //console.log("opcaoActual: "+this.opcaoActual+"   "+this.contactos[this.opcaoActual]);
         this.setDisplayedOptions();
     }
 
     previousOption() {
         this.opcaoActual = (this.opcaoActual - 1) % this.contactos.length;
+        if (this.opcaoActual < 0) this.opcaoActual += this.contactos.length;
+        //console.log("opcaoActual: "+this.opcaoActual+"   "+this.contactos[this.opcaoActual]);
         this.setDisplayedOptions();
     }
 
