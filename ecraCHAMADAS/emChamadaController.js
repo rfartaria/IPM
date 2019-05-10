@@ -38,10 +38,12 @@ var emChamadaController = {
         if (HUD.ecraActual) {
             $.get(this.url, function(data) {
                 $("#hud-screen-container").html(data);
-                $("div.breadcrumbs").html($("div.breadcrumbs").html()+" > <span>EM CHAMDADA</span>")
+                //$("div.breadcrumbs").html($("div.breadcrumbs").html()+" > <span>EM CHAMDADA</span>")
+                $("div.breadcrumbs").html(emChamadaController.parent.breadCrumbs+" > <span>EM CHAMDADA</span>")
                 if (emChamadaController.contacto)
                     $("#contacto_a_falar").html(emChamadaController.contacto);
                 emChamadaController.updateInterface();
+                emChamadaController.animatePhone();
             })
             .fail(function(){
                 alert("não consegui obter html da view!");
@@ -53,6 +55,19 @@ var emChamadaController = {
 
     updateInterface: function() {
         //pass
+    },
+
+    animatePhone(direction) {
+        setTimeout(function animateScheduled(direction) {
+            if (!direction) direction = -1;
+            var jobj = $(".fa-phone-volume");
+            if (! jobj.length) return;
+            if (direction > 0)
+                jobj.animate({opacity: 1}, 1000);
+            else
+                jobj.animate({opacity: 0}, 1000);
+            setTimeout(animateScheduled(-direction), 1000);    
+        }, 0);
     }
 }
 

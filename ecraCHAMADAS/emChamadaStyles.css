@@ -1,3 +1,11 @@
 /* CSS específico do ecrã */
 /* usar prefixo adequado para todas as classes */
 
+.EM-CHAMADA-indicador {
+    padding-left: 20px;
+    margin-top: 180px;
+}
+
+#contacto_a_falar {
+    color: lightgoldenrodyellow;
+}
