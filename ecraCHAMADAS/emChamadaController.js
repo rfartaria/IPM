@@ -31,6 +31,9 @@ var emChamadaController = {
                 //pass
             }
         }
+
+        HUD.accoes.clickRIGHT = HUD.accoes.clickOK;
+        HUD.accoes.clickLEFT = HUD.accoes.clickBack;
     },
 
     //Carrega o HTML do proprio ecra
@@ -57,16 +60,17 @@ var emChamadaController = {
         //pass
     },
 
-    animatePhone(direction) {
-        setTimeout(function animateScheduled(direction) {
-            if (!direction) direction = -1;
+    animatePhone() {
+        var direction = -1;
+        setTimeout(function animateScheduled() {
             var jobj = $(".fa-phone-volume");
             if (! jobj.length) return;
             if (direction > 0)
                 jobj.animate({opacity: 1}, 1000);
             else
                 jobj.animate({opacity: 0}, 1000);
-            setTimeout(animateScheduled(-direction), 1000);    
+            direction = -direction;
+            setTimeout(animateScheduled, 1000);
         }, 0);
     }
 }

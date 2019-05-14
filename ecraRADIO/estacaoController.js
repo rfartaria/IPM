@@ -44,6 +44,9 @@ var estacaoController = {
             radioController.setAccoesIniciais();
             radioController.updateInterface();
         }
+
+        HUD.accoes.clickRIGHT = HUD.accoes.clickOK;
+        HUD.accoes.clickLEFT = HUD.accoes.clickBack;
     },
 
     //Carrega o HTML do proprio ecra

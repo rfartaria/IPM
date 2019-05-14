@@ -68,6 +68,9 @@ var escritaController = {
                 escritaController.atualizaSugestao();
             }
         }
+
+        HUD.accoes.clickRIGHT = HUD.accoes.clickOK;
+        HUD.accoes.clickLEFT = HUD.accoes.clickBack;
     },
 
     atualizaSugestao: function(){

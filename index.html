@@ -49,22 +49,23 @@
                 </div>
                 <div class="controlador-container">
                     <div class="controlador-object">
-                        <img class="controlador-img" id='controlador' src="img/controlador_01.png" usemap="#image-map">
+                        <!-- <img class="controlador-img" id='controlador' src="img/controlador_01.png" usemap="#image-map">
                         <map name="image-map">
                             <area target="" alt="OK" title="OK" href="javascript:void(0)" coords="95,134,77,132,76,64,218,66,223,74,223,125,171,124,171,134,132,133,130,94,96,95" shape="poly" onclick="HUD.accoes.clickOK();">
                             <area target="" alt="CANCEL" title="CANCEL" href="javascript:void(0)" coords="222,211,76,213,74,146,95,144,95,183,131,182,132,145,166,145,167,150,221,150" shape="poly" onclick="HUD.accoes.clickBack();">
                             <area target="" alt="SCROLL" title="SCROLL - RODA" href="javascript:void(0)" coords="98,96,127,181" shape="rect" onwheel="HUD.accoes.scroll(event);">
                             <area target="" alt="ON/OFF" title="ON/OFF" href="javascript:void(0)" coords="173,150,222,125" shape="rect" onclick="HUD.accoes.clickONOFF();">
-                        </map>
-                        <!-- <img class="controlador-img" id='controlador' src="img/controlador_02.png" usemap="#image-map">
-                        <map name="image-map">
-                            <area target="" alt="OK" title="OK" href="javascript:void(0);" coords="113,52,137,50,139,60,223,59,227,50,262,50,265,112,215,114,213,122,169,122,170,83,137,82,136,121,114,118" shape="poly" onclick="HUD.accoes.clickOK();">
-                            <area target="" alt="CANCEL" title="CANCEL" href="javascript:void(0);" coords="113,133,136,131,136,172,169,173,169,134,212,133,217,140,264,139,264,199,230,202,229,195,139,194,137,205,113,202" shape="poly" onclick="HUD.accoes.clickBack();">
-                            <area target="" alt="SCROLL" title="SCROLL" href="javascript:void(0);" coords="141,85,166,167" shape="rect" onwheel="HUD.accoes.scroll(event);">
-                            <area target="" alt="ON/OFF" title="ON/OFF" href="javascript:void(0);" coords="216,117,263,134" shape="rect" onclick="HUD.accoes.clickONOFF();">
-                            <area target="" alt="CONFIRMAR" title="CONFIRMAR" href="javascript:void(0);" coords="141,40,223,56" shape="rect" onclick="HUD.accoes.clickCONFIRMAR();">
-                            <area target="" alt="CANCELAR" title="CANCELAR" href="javascript:void(0);" coords="141,196,226,212" shape="rect" onclick="HUD.accoes.clickCANCELAR();">
                         </map> -->
+                        <img class="controlador-img" id='controlador' src="img/controlador_02.png" usemap="#image-map">
+                        <map name="image-map">
+                            <area target="" alt="RODA" title="RODA" href="javascript:void(0);" coords="132,92,163,172" shape="rect" onwheel="HUD.accoes.scroll(event);">
+                            <area target="" alt="TERMINAR CHAMADA" title="TERMINAR CHAMADA" href="javascript:void(0);" coords="212,100,269,122" shape="rect" onclick="HUD.accoes.clickHANGUP();">
+                            <area target="" alt="ON/OFF" title="ON/OFF" href="javascript:void(0);" coords="115,12,163,27" shape="rect" onclick="HUD.accoes.clickONOFF();">
+                            <area target="" alt="ESQUERDA" title="ESQUERDA" href="javascript:void(0);" coords="114,71,145,57,145,83" shape="poly" onclick="HUD.accoes.clickLEFT();">
+                            <area target="" alt="DIREITA" title="DIREITA" href="javascript:void(0);" coords="153,58,180,70,152,86" shape="poly" onclick="HUD.accoes.clickRIGHT();">
+                            <area target="" alt="OK" title="OK" href="javascript:void(0);" coords="86,25,108,21,108,31,165,31,168,21,269,23,270,95,210,99,207,106,168,108,168,87,189,68,149,52,106,70,126,87,126,109,86,107" shape="poly" onclick="HUD.accoes.clickOK();">
+                            <area target="" alt="VOLTAR" title="VOLTAR" href="javascript:void(0);" coords="85,120,128,118,127,177,168,176,169,120,205,122,207,130,268,129,267,209,86,209" shape="poly" onclick="HUD.accoes.clickBack();">
+                        </map>
                     </div>
                 </div>
             </div>

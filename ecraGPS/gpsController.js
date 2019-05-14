@@ -52,6 +52,9 @@ var gpsController = {
             HUD.setEcraInactivo();
             HUD.setAccoesPadrao();
         }
+
+        HUD.accoes.clickRIGHT = HUD.accoes.clickOK;
+        HUD.accoes.clickLEFT = HUD.accoes.clickBack;
     },
     
     //Carrega o HTML do proprio ecra

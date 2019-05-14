@@ -124,6 +124,9 @@ var HUD = {
                 }
             }
         }
+
+        HUD.accoes.clickRIGHT = HUD.accoes.clickOK;
+        HUD.accoes.clickLEFT = HUD.accoes.clickBack;
     },
 
     loadEcraView: function() {
