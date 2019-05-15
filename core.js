@@ -61,39 +61,35 @@ var HUD = {
         
         HUD.accoes.clickOK = function() {
             if (HUD.ecraActual) {
-                if (HUD.ecraActual.id == "HELP1") {
+                switch(HUD.ecraActual.id){
+                case ("HELP1") :
                     //HUD.nextEcra();
                     HUD.loadEcrasPadrao();
-                    return;
-                }
-                if (HUD.ecraActual.id == "HELP2") {
+                    break;
+                case ("HELP2") :
                     HUD.loadEcrasPadrao();
-                    return;
-                }
-                if (HUD.ecraActual.id == "INFOVEICULO") {
+                    break;
+                case ("INFOVEICULO") :
                     //TODO: ir para contexto do INFOVEICULO
-                    return;
-                }
-                if (HUD.ecraActual.id == "RADIO") {
+                    break;
+                case ("RADIO") :
                     HUD.setEcraActivo();
                     radioController.opcaoActual = 0;
                     radioController.setAccoesIniciais();
                     radioController.updateInterface();
-                    return;
-                }
-                if (HUD.ecraActual.id == "CHAMADAS") {
+                    break;
+                case ("CHAMADAS") :
                     HUD.setEcraActivo();
                     chamadasController.opcaoActual = 0;
                     chamadasController.setAccoesIniciais();
                     chamadasController.updateInterface();
-                    return;
-                }
-                if(HUD.ecraActual.id == "GPS"){
+                    break;
+                case ("GPS") :
                     HUD.setEcraActivo();
                     gpsController.opcaoActual = 0;
                     gpsController.setAccoesIniciais();
                     gpsController.updateInterface();
-                    return;
+                    break;
                 }
                 //TODO: os outros ecrãs
             }
