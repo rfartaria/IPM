@@ -30,6 +30,7 @@ var HUD = {
     turnOFF: function() {
         HUD.setUp();
         HUD.setEcraInactivo();
+        HUD.hideTopBar();
         HUD.updateInterface();
     },
 
@@ -65,6 +66,7 @@ var HUD = {
                 case ("HELP1") :
                     //HUD.nextEcra();
                     HUD.loadEcrasPadrao();
+                    help1Controller.updateInterface();
                     break;
                 case ("HELP2") :
                     HUD.loadEcrasPadrao();
@@ -128,14 +130,14 @@ var HUD = {
     loadEcraView: function() {
         if (HUD.ecraActual) {
             $.get(HUD.ecraActual.url, function(data) {
-                $("#hud-screen-container").html(data);
+                $("#hud-screen-container-inner").html(data);
                 if (HUD.ecraActual.updateInterface) HUD.ecraActual.updateInterface();
             })
             .fail(function(){
                 alert("não consegui obter html da view!");
             });
         } else {
-            $("#hud-screen-container").html('');
+            $("#hud-screen-container-inner").html('');
         }
     },
 
@@ -147,14 +149,36 @@ var HUD = {
             $('#icon-ecra-'+HUD.ecraActual.id).addClass("hud-icon-active");
         // carregar view do ecrã activo
         HUD.loadEcraView();
+        HUD.ecraActual.updateInterface();
     },
 
     setEcraActivo: function() {
-        $('#hud-screen-container').addClass('hud-screen-active');
+        $('#hud-screen-container-outer').addClass('hud-screen-active');
     },
 
     setEcraInactivo: function() {
-        $('#hud-screen-container').removeClass('hud-screen-active');
+        $('#hud-screen-container-outer').removeClass('hud-screen-active');
+    },
+
+    showTopBar: function() {
+        document.getElementById("hud-screen-top-bar").style.display = 'grid';
+        HUD.showBreadCrumbs();
+    },
+
+    hideTopBar: function() {
+        document.getElementById("hud-screen-top-bar").style.display = 'none';
+    },
+
+    setBreadCrumbs(html) {
+        $("#breadcrumbs").html(html);
+    },
+
+    hideBreadCrumbs: function() {
+        document.getElementById("breadcrumbs").style.display = 'none';
+    },
+
+    showBreadCrumbs: function() {
+        document.getElementById("breadcrumbs").style.display = 'block';
     }
 }
 

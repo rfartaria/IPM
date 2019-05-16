@@ -30,7 +30,7 @@ var radioController = {
             if (HUD.ecraActual) {
                 radioController.opcoesControllers[radioController.opcaoActual].loadOwnEcraView();
                 radioController.opcoesControllers[radioController.opcaoActual].setAccoesIniciais();
-                //o ecra de frequencias nao serah implementado
+                //o ecra de frequencias nao será implementado
             }
         }
 
@@ -53,16 +53,16 @@ var radioController = {
             HUD.setAccoesPadrao();
         }
 
-        HUD.accoes.clickRIGHT = HUD.accoes.clickOK;
+        HUD.accoes.clickRIGHT = function(){};
         HUD.accoes.clickLEFT = HUD.accoes.clickBack;
     },
     
     //Carrega o HTML do proprio ecra
     loadOwnEcraView: function() {
-        //$("#hud-screen-container").load(opcoesControllers[opcaoActual].url);
+        //$("#hud-screen-container-inner").load(opcoesControllers[opcaoActual].url);
         if (HUD.ecraActual) {
             $.get(/*radioController.opcoesControllers[radioController.opcaoActual]*/radioController.url, function(data) {
-                $("#hud-screen-container").html(data);
+                $("#hud-screen-container-inner").html(data);
                 //inicializar variaveis eh feito aqui
                 /*radioController.opcoesControllers = [ estacaoController, undefined ];
                 radioController.opcaoActual = 0;*/
@@ -72,12 +72,15 @@ var radioController = {
                 alert("não consegui obter html da view!");
             });
         } else {
-            $("#hud-screen-container").html('');
+            $("#hud-screen-container-inner").html('');
         }
     },
 
     //Atualiza as selecoes no ecra
     updateInterface: function() {
+        HUD.setBreadCrumbs('<span>RADIO</span>');
+        HUD.showTopBar();
+
         var aTirar = $('#opcoes-radio li:eq(0)');
         aTirar.removeClass('opcao-seleccionada');
         aTirar = $('#opcoes-radio li:eq(1)');

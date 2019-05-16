@@ -92,8 +92,9 @@ class contactosControllerBase {
         if (HUD.ecraActual) {
             $.get(this.url, function(data) {
                 // breadcrumbs
-                $("#hud-screen-container").html(data);
-                $("div.breadcrumbs").html(self.breadCrumbs);
+                $("#hud-screen-container-inner").html(data);
+                HUD.setBreadCrumbs(self.breadCrumbs);
+                HUD.showTopBar();
                 self.setDisplayedOptions();
                 self.updateInterface();
             })
@@ -101,7 +102,7 @@ class contactosControllerBase {
                 alert("não consegui obter html da view!");
             });
         } else {
-            $("#hud-screen-container").html('');
+            $("#hud-screen-container-inner").html('');
         }
     }
 

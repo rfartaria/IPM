@@ -41,7 +41,7 @@
 
 .hud-icon {
     height: 70px;
-    background-color: rgba(245, 245, 220,0.3);
+    background-color: rgba(245, 245, 220,0.2);
     text-align: center;
     vertical-align: middle;
 }
@@ -50,7 +50,9 @@
     /* border: 1px;
     border-style: solid;
     border-color: black; */
-    background-color: rgba(172, 255, 164,0.3);
+    /* background-color: rgba(172, 255, 164,0.3); */
+    color: rgba(70, 57, 255, 0.61);
+    background: rgba(255,255,255,0.4)
 }
 
 .hud-screen {
@@ -91,9 +93,20 @@ html {
 
 .breadcrumbs {
     font-size: 10pt;
+    grid-column: 1;
 }
 
 .breadcrumbs span {
     font-size: inherit;
     background: rgba(0, 0, 0, 0.4);
+}
+
+.indicadores-actividade {
+    grid-column: 2;
+    text-align: right;
+}
+
+.hud-screen-top-bar {
+    display: grid;
+    grid-template-columns: 70% 30%;
 }

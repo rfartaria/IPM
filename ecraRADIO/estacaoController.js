@@ -45,23 +45,30 @@ var estacaoController = {
             radioController.updateInterface();
         }
 
-        HUD.accoes.clickRIGHT = HUD.accoes.clickOK;
-        HUD.accoes.clickLEFT = HUD.accoes.clickBack;
+        HUD.accoes.clickRIGHT = function(){};
+        HUD.accoes.clickLEFT = function(){
+            radioController.loadOwnEcraView();
+            radioController.updateInterface()
+            radioController.setAccoesIniciais();
+            HUD.accoes.clickBack();
+        };
     },
 
     //Carrega o HTML do proprio ecra
     loadOwnEcraView: function() {
-        //$("#hud-screen-container").load(opcoesControllers[opcaoActual].url);
+        HUD.setBreadCrumbs('<span>RADIO</span> > <span>ESTA&Ccedil;&Otilde;ES</span>');
+        HUD.showTopBar();
+        //$("#hud-screen-container-inner").load(opcoesControllers[opcaoActual].url);
         if (HUD.ecraActual) {
             $.get(estacaoController.url, function(data) {
-                $("#hud-screen-container").html(data);
+                $("#hud-screen-container-inner").html(data);
                 estacaoController.updateInterface();
             })
             .fail(function(){
                 alert("não consegui obter html da view!");
             });
         } else {
-            $("#hud-screen-container").html('');
+            $("#hud-screen-container-inner").html('');
         }
     },
 

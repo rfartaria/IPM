@@ -40,9 +40,8 @@ var emChamadaController = {
     loadOwnEcraView: function() {
         if (HUD.ecraActual) {
             $.get(this.url, function(data) {
-                $("#hud-screen-container").html(data);
-                //$("div.breadcrumbs").html($("div.breadcrumbs").html()+" > <span>EM CHAMDADA</span>")
-                $("div.breadcrumbs").html(emChamadaController.parent.breadCrumbs+" > <span>EM CHAMDADA</span>")
+                $("#hud-screen-container-inner").html(data);
+                HUD.setBreadCrumbs(emChamadaController.parent.breadCrumbs+" > <span>EM CHAMADA</span>");
                 if (emChamadaController.contacto)
                     $("#contacto_a_falar").html(emChamadaController.contacto);
                 emChamadaController.updateInterface();
@@ -52,7 +51,7 @@ var emChamadaController = {
                 alert("não consegui obter html da view!");
             });
         } else {
-            $("#hud-screen-container").html('');
+            $("#hud-screen-container-inner").html('');
         }
     },
 
