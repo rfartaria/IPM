@@ -17,6 +17,8 @@ var escritaController = {
     sugestaoSelecionada: 0,
 
     setAccoesIniciais: function() {
+        escritaController.indiceInicial = 0;
+        escritaController.indiceFim = 6;
         //SCROLL
         HUD.accoes.scroll = function(e) {
             var scrollDirectionUP = e.deltaY < 0;
@@ -69,8 +71,24 @@ var escritaController = {
             }
         }
 
-        HUD.accoes.clickRIGHT = HUD.accoes.clickOK;
-        HUD.accoes.clickLEFT = HUD.accoes.clickBack;
+        HUD.accoes.clickRIGHT = function(){};
+
+        HUD.accoes.clickLEFT = function(){ 
+            if(escritaController.nSugestoes > 0){
+                escritaController.sugestaoSelecionada = 0;
+                var aRemover = $('#alfabeto li:eq(0)');
+                aRemover.removeClass("opcao-seleccionada");
+                var aSelecionar = $('#lista-sugestoes li:eq('+escritaController.sugestaoSelecionada+')');
+                aSelecionar.addClass("opcao-seleccionada");
+                escritaController.setAccoesSugestoes();
+            }else{
+                gpsController.loadOwnEcraView();
+                gpsController.updateInterface()
+                gpsController.setAccoesIniciais();
+                HUD.accoes.clickBack();
+            }
+        }
+        
     },
 
     atualizaSugestao: function(){
@@ -193,7 +211,16 @@ var escritaController = {
             /*HUD.setEcraInactivo();
             HUD.setAccoesPadrao();*/
             
+            
         }
+
+        HUD.accoes.clickRIGHT = HUD.accoes.clickBack;
+        HUD.accoes.clickLEFT = function(){
+            gpsController.loadOwnEcraView();
+            gpsController.updateInterface()
+            gpsController.setAccoesIniciais();
+            HUD.accoes.clickBack();
+        };
     },
 
     previousOpcao: function(){
