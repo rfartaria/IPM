@@ -47,8 +47,13 @@ class contactosControllerBase {
             }
         }
 
-        HUD.accoes.clickRIGHT = HUD.accoes.clickOK;
-        HUD.accoes.clickLEFT = HUD.accoes.clickBack;
+        HUD.accoes.clickRIGHT = function(){};
+        HUD.accoes.clickLEFT = function(){
+            chamadasController.loadOwnEcraView();
+            chamadasController.updateInterface()
+            chamadasController.setAccoesIniciais();
+            HUD.accoes.clickBack();
+        };
     }
 
     nextOption() {

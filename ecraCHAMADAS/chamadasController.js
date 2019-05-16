@@ -51,7 +51,7 @@ var chamadasController = {
             }
         }
 
-        HUD.accoes.clickRIGHT = HUD.accoes.clickOK;
+        HUD.accoes.clickRIGHT = function(){};
         HUD.accoes.clickLEFT = HUD.accoes.clickBack;
     },
 
