@@ -32,8 +32,8 @@ var emChamadaController = {
             }
         }
 
-        HUD.accoes.clickRIGHT = HUD.accoes.clickOK;
-        HUD.accoes.clickLEFT = HUD.accoes.clickBack;
+        HUD.accoes.clickRIGHT = function(){};
+        //HUD.accoes.clickLEFT = nada; // deixa estar a mesma que já vinha do ecrã anterior
     },
 
     //Carrega o HTML do proprio ecra
