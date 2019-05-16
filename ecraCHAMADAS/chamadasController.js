@@ -34,7 +34,7 @@ var chamadasController = {
         HUD.accoes.clickBack = function() {
             if (HUD.ecraActual) {
                 chamadasController.opcaoActual = undefined;
-                chamadasController.updateInterface();
+                chamadasController.loadOwnEcraView();
                 HUD.setEcraInactivo();
                 HUD.setAccoesPadrao();
             }
@@ -62,7 +62,13 @@ var chamadasController = {
             $("#CHAMADAS-opcoes li").removeClass("opcao-seleccionada");
         else
             $("#CHAMADAS-opcoes li").eq(chamadasController.opcaoActual).addClass("opcao-seleccionada");
-            
+        if (emChamadaController.contacto) {
+            $("#contacto_a_falar_chamadas").text(emChamadaController.contacto);
+            document.getElementById('EM-CHAMADA-indicador-chamadas').style.display = 'block';
+        }
+        else {
+            document.getElementById('EM-CHAMADA-indicador-chamadas').style.display = 'none';
+        }
     },
 
     nextOption: function() {

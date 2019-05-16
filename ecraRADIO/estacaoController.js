@@ -25,6 +25,7 @@ var estacaoController = {
             estacaoController.setUp();
             radioController.loadOwnEcraView();
             radioController.setAccoesIniciais();
+            HUD.addStateIcon('<span id="state-icon-radio-on"><img src="img/radio.svg" style="width:30px; margin-left:5px;"><span>');
         }
 
         HUD.accoes.scroll = function(e) {
@@ -42,13 +43,11 @@ var estacaoController = {
             $('#estacoes-estacao li:eq('+(estacaoController.estacaoActual)+')').removeClass('opcao-seleccionada');
             radioController.loadOwnEcraView();
             radioController.setAccoesIniciais();
-            radioController.updateInterface();
         }
 
-        HUD.accoes.clickRIGHT = function(){};
-        HUD.accoes.clickLEFT = function(){
+        HUD.accoes.clickRIGHT = function() {};
+        HUD.accoes.clickLEFT = function() {
             radioController.loadOwnEcraView();
-            radioController.updateInterface()
             radioController.setAccoesIniciais();
             HUD.accoes.clickBack();
         };

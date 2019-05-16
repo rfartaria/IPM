@@ -26,6 +26,7 @@ var radioController = {
             if(radioController.opcaoActual == 2){
                 radioController.estacaoAtual = "Ra\u0301dio Desligado";
                 radioController.updateInterface();
+                HUD.removeSateIcon('state-icon-radio-on');
             }
             if (HUD.ecraActual) {
                 radioController.opcoesControllers[radioController.opcaoActual].loadOwnEcraView();

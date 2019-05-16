@@ -8,6 +8,20 @@ var infoVeiculoController = {
 
     updateInterface: function() {
         HUD.hideBreadCrumbs();
+    },
+
+    loadOwnEcraView: function() {
+        if (HUD.ecraActual) {
+            $.get(infoVeiculoController.url, function(data) {
+                $("#hud-screen-container-inner").html(data);
+                infoVeiculoController.updateInterface();
+            })
+            .fail(function(){
+                alert("não consegui obter html da view!");
+            });
+        } else {
+            $("#hud-screen-container-inner").html('');
+        }
     }
 }
 

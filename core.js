@@ -15,15 +15,16 @@ var HUD = {
     setUp: function() {
         HUD.estado = "OFF";
         HUD.ecrasOrdem = [];
-        HUD.ecraActual = null;
+        HUD.ecraActual = undefined;
         HUD.setAccoesPadrao();
     },
 
     turnON: function() {
+        HUD.setUp();
         HUD.estado = "ON";
-        // HUD.ecrasOrdem = [ help1Controller, help2Controller ];
         HUD.ecrasOrdem = [ help1Controller ];
         HUD.ecraActual = help1Controller;
+        HUD.loadEcraView();
         HUD.updateInterface();
     },
     
@@ -31,7 +32,7 @@ var HUD = {
         HUD.setUp();
         HUD.setEcraInactivo();
         HUD.hideTopBar();
-        HUD.updateInterface();
+        HUD.clearInterface();
     },
 
     nextEcra: function() {
@@ -125,17 +126,13 @@ var HUD = {
 
         HUD.accoes.clickRIGHT = HUD.accoes.clickOK;
         HUD.accoes.clickLEFT = HUD.accoes.clickBack;
+
+        if (!HUD.accoes.clickHANGUP) HUD.accoes.clickHANGUP = function(){};
     },
 
     loadEcraView: function() {
         if (HUD.ecraActual) {
-            $.get(HUD.ecraActual.url, function(data) {
-                $("#hud-screen-container-inner").html(data);
-                if (HUD.ecraActual.updateInterface) HUD.ecraActual.updateInterface();
-            })
-            .fail(function(){
-                alert("não consegui obter html da view!");
-            });
+            HUD.ecraActual.loadOwnEcraView();
         } else {
             $("#hud-screen-container-inner").html('');
         }
@@ -145,11 +142,11 @@ var HUD = {
         // colocar os icons dos ecrãs registados
         $('#hud-icons-container').html(HUD.ecrasOrdem.map((c) => {return c.iconHtml}).join(''));
         // mudar a classe do icon do ecrã que está activo
-        if (HUD.ecraActual)
+        if (HUD.ecraActual) {
             $('#icon-ecra-'+HUD.ecraActual.id).addClass("hud-icon-active");
-        // carregar view do ecrã activo
-        HUD.loadEcraView();
-        HUD.ecraActual.updateInterface();
+            // carregar view do ecrã activo
+            HUD.loadEcraView();
+        }
     },
 
     setEcraActivo: function() {
@@ -179,6 +176,23 @@ var HUD = {
 
     showBreadCrumbs: function() {
         document.getElementById("breadcrumbs").style.display = 'block';
+    },
+
+    // html tem que ser da forma: <span id="state-icon-em-chamada"><i class="fas fa-phone-volume"></i><span>
+    addStateIcon: function(html) {
+        var matches = html.match(new RegExp('id=["\'](.*?)["\']'));
+        if (!matches) return;
+        if ($('#'+matches[1]).length) return;
+        $('#indicadores-actividade').append(html);
+    },
+
+    removeSateIcon(id) {
+        $('#'+id).remove();
+    },
+
+    clearInterface: function() {
+        $('#hud-icons-container').html('');
+        $('#hud-screen-container-inner').html('');
     }
 }
 

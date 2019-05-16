@@ -8,6 +8,20 @@ var help1Controller = {
 
     updateInterface: function() {
         HUD.hideTopBar();
+    },
+
+    loadOwnEcraView: function() {
+        if (HUD.ecraActual) {
+            $.get(help1Controller.url, function(data) {
+                $("#hud-screen-container-inner").html(data);
+                help1Controller.updateInterface();
+            })
+            .fail(function(){
+                alert("não consegui obter html da view!");
+            });
+        } else {
+            $("#hud-screen-container-inner").html('');
+        }
     }
 }
 

@@ -20,7 +20,6 @@ var emChamadaController = {
         HUD.accoes.clickBack = function() {
             if (HUD.ecraActual) {
                 emChamadaController.parent.loadOwnEcraView();
-                emChamadaController.parent.updateInterface();
                 emChamadaController.parent.setAccoesIniciais();
             }
         }
@@ -34,6 +33,13 @@ var emChamadaController = {
 
         HUD.accoes.clickRIGHT = function(){};
         //HUD.accoes.clickLEFT = nada; // deixa estar a mesma que já vinha do ecrã anterior
+
+        HUD.accoes.clickHANGUP = function() {
+            HUD.removeSateIcon('state-icon-em-chamada');
+            emChamadaController.contacto = undefined;
+            $('.EM-CHAMADA-indicador').css('display', 'none');
+            if ($('#breadcrumbs').html().includes('EM CHAMADA')) HUD.accoes.clickBack();
+        }
     },
 
     //Carrega o HTML do proprio ecra
@@ -44,6 +50,7 @@ var emChamadaController = {
                 HUD.setBreadCrumbs(emChamadaController.parent.breadCrumbs+" > <span>EM CHAMADA</span>");
                 if (emChamadaController.contacto)
                     $("#contacto_a_falar").html(emChamadaController.contacto);
+                HUD.addStateIcon('<span id="state-icon-em-chamada"><i class="fas fa-phone-volume" style="margin-left:5px;"></i><span>');
                 emChamadaController.updateInterface();
                 emChamadaController.animatePhone();
             })

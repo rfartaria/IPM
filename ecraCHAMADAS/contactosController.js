@@ -23,7 +23,6 @@ class contactosControllerBase {
                 emChamadaController.parent = self;
                 emChamadaController.setAccoesIniciais();
                 emChamadaController.loadOwnEcraView();
-                emChamadaController.updateInterface();
             }
         }
     
@@ -31,7 +30,6 @@ class contactosControllerBase {
             if (HUD.ecraActual) {
                 self.opcaoActual = undefined;
                 chamadasController.loadOwnEcraView();
-                chamadasController.updateInterface();
                 chamadasController.setAccoesIniciais();
             }
         }
@@ -50,7 +48,6 @@ class contactosControllerBase {
         HUD.accoes.clickRIGHT = function(){};
         HUD.accoes.clickLEFT = function(){
             chamadasController.loadOwnEcraView();
-            chamadasController.updateInterface()
             chamadasController.setAccoesIniciais();
             HUD.accoes.clickBack();
         };

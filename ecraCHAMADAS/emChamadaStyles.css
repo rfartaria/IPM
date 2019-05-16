@@ -3,9 +3,8 @@
 
 .EM-CHAMADA-indicador {
     padding-left: 20px;
-    margin-top: 180px;
 }
 
-#contacto_a_falar {
+#contacto_a_falar, #contacto_a_falar_chamadas {
     color: lightgoldenrodyellow;
 }
