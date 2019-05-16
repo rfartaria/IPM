@@ -30,6 +30,7 @@ var HUD = {
     turnOFF: function() {
         HUD.setUp();
         HUD.setEcraInactivo();
+        HUD.hideTopBar();
         HUD.updateInterface();
     },
 

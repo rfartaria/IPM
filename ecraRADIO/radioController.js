@@ -30,7 +30,7 @@ var radioController = {
             if (HUD.ecraActual) {
                 radioController.opcoesControllers[radioController.opcaoActual].loadOwnEcraView();
                 radioController.opcoesControllers[radioController.opcaoActual].setAccoesIniciais();
-                //o ecra de frequencias nao serah implementado
+                //o ecra de frequencias nao será implementado
             }
         }
 
@@ -53,7 +53,7 @@ var radioController = {
             HUD.setAccoesPadrao();
         }
 
-        HUD.accoes.clickRIGHT = HUD.accoes.clickOK;
+        HUD.accoes.clickRIGHT = function(){};
         HUD.accoes.clickLEFT = HUD.accoes.clickBack;
     },
     

@@ -45,8 +45,13 @@ var estacaoController = {
             radioController.updateInterface();
         }
 
-        HUD.accoes.clickRIGHT = HUD.accoes.clickOK;
-        HUD.accoes.clickLEFT = HUD.accoes.clickBack;
+        HUD.accoes.clickRIGHT = function(){};
+        HUD.accoes.clickLEFT = function(){
+            radioController.loadOwnEcraView();
+            radioController.updateInterface()
+            radioController.setAccoesIniciais();
+            HUD.accoes.clickBack();
+        };
     },
 
     //Carrega o HTML do proprio ecra
