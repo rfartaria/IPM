@@ -38,16 +38,16 @@ var HUD = {
         var i = HUD.ecrasOrdem.indexOf(HUD.ecraActual);
         if (i>=0 && i<HUD.ecrasOrdem.length-1) {
             HUD.ecraActual = HUD.ecrasOrdem[i+1];
+            HUD.updateInterface();
         }
-        HUD.updateInterface();
     },
 
     previousEcra: function() {
         var i = HUD.ecrasOrdem.indexOf(HUD.ecraActual);
         if (i>0) {
             HUD.ecraActual = HUD.ecrasOrdem[i-1];
+            HUD.updateInterface();
         }
-        HUD.updateInterface();
     },
 
     loadEcrasPadrao: function() {
