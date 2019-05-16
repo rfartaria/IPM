@@ -103,6 +103,7 @@ html {
 
 .indicadores-actividade {
     grid-column: 2;
+    text-align: right;
 }
 
 .hud-screen-top-bar {
