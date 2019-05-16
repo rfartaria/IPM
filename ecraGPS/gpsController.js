@@ -59,10 +59,10 @@ var gpsController = {
     
     //Carrega o HTML do proprio ecra
     loadOwnEcraView: function() {
-        //$("#hud-screen-container").load(opcoesControllers[opcaoActual].url);
+        //$("#hud-screen-container-inner").load(opcoesControllers[opcaoActual].url);
         if (HUD.ecraActual) {
             $.get(/*gpsController.opcoesControllers[gpsController.opcaoActual]*/gpsController.url, function(data) {
-                $("#hud-screen-container").html(data);
+                $("#hud-screen-container-inner").html(data);
                 //inicializar variaveis eh feito aqui
                 /*gpsController.opcoesControllers = [ escritaController, undefined ];
                 gpsController.opcaoActual = 0;*/
@@ -72,12 +72,14 @@ var gpsController = {
                 alert("não consegui obter html da view!");
             });
         } else {
-            $("#hud-screen-container").html('');
+            $("#hud-screen-container-inner").html('');
         }
     },
 
     //Atualiza as selecoes no ecra
     updateInterface: function() {
+        HUD.setBreadCrumbs('<span>GPS</span>')
+        HUD.showTopBar();
         var aTirar = $('#opcoes-gps li:eq(0)');
         aTirar.removeClass('opcao-seleccionada');
         aTirar = $('#opcoes-gps li:eq(1)');

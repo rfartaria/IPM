@@ -91,9 +91,19 @@ html {
 
 .breadcrumbs {
     font-size: 10pt;
+    grid-column: 1;
 }
 
 .breadcrumbs span {
     font-size: inherit;
     background: rgba(0, 0, 0, 0.4);
+}
+
+.indicadores-actividade {
+    grid-column: 2;
+}
+
+.hud-screen-top-bar {
+    display: grid;
+    grid-template-columns: 70% 30%;
 }

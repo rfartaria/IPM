@@ -218,18 +218,20 @@ var escritaController = {
 
     //Carrega o HTML do proprio ecra
     loadOwnEcraView: function() {
-        //$("#hud-screen-container").load(opcoesControllers[opcaoActual].url);
+        //$("#hud-screen-container-inner").load(opcoesControllers[opcaoActual].url);
         if (HUD.ecraActual) {
             $.get(escritaController.url, function(data) {
-                $("#hud-screen-container").html(data);
+                $("#hud-screen-container-inner").html(data);
                 var aSelecionar = $('#alfabeto li:eq(0)');
                 aSelecionar.addClass("opcao-seleccionada");
+                HUD.setBreadCrumbs('<span>GPS</span> > <span>ESCRITA</span>');
+                HUD.showTopBar();
             })
             .fail(function(){
                 alert("não consegui obter html da view!");
             });
         } else {
-            $("#hud-screen-container").html('');
+            $("#hud-screen-container-inner").html('');
         }
     },
 }

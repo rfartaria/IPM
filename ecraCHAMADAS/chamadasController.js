@@ -56,6 +56,8 @@ var chamadasController = {
     },
 
     updateInterface: function() {
+        HUD.setBreadCrumbs('<span>CHAMADAS</span>');
+        HUD.showTopBar();
         if (typeof chamadasController.opcaoActual === 'undefined')
             $("#CHAMADAS-opcoes li").removeClass("opcao-seleccionada");
         else
@@ -78,14 +80,14 @@ var chamadasController = {
     loadOwnEcraView: function() {
         if (HUD.ecraActual) {
             $.get(chamadasController.url, function(data) {
-                $("#hud-screen-container").html(data);
+                $("#hud-screen-container-inner").html(data);
                 chamadasController.updateInterface();
             })
             .fail(function(){
                 alert("não consegui obter html da view!");
             });
         } else {
-            $("#hud-screen-container").html('');
+            $("#hud-screen-container-inner").html('');
         }
     }
 }
