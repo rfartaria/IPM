@@ -156,7 +156,7 @@ var HUD = {
 
     setEcraInactivo: function() {
         $('#hud-screen-container-outer').removeClass('hud-screen-active');
-        $('#icon-ecra-'+HUD.ecraActual.id).addClass("hud-icon-active");
+        if(HUD.ecraActual) $('#icon-ecra-'+HUD.ecraActual.id).addClass("hud-icon-active");
     },
 
     showTopBar: function() {
