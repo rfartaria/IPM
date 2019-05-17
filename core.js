@@ -151,10 +151,12 @@ var HUD = {
 
     setEcraActivo: function() {
         $('#hud-screen-container-outer').addClass('hud-screen-active');
+        $('#icon-ecra-'+HUD.ecraActual.id).removeClass("hud-icon-active");
     },
 
     setEcraInactivo: function() {
         $('#hud-screen-container-outer').removeClass('hud-screen-active');
+        $('#icon-ecra-'+HUD.ecraActual.id).addClass("hud-icon-active");
     },
 
     showTopBar: function() {
