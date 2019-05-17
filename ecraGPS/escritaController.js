@@ -4,7 +4,7 @@ var escritaController = {
     id: "ESCRITA",
     url: "ecraGPS/escritaView.html",
     css: "ecraGPS/escritaStyles.css",
-    iconHtml: `<div class="hud-icon" id="icon-ecra-GPS"><i class="fas fa-globe-europe" style="font-size: 36px; line-height: 70px;"></i></div>`,
+    iconHtml: `<div class="hud-icon" id="icon-ecra-GPS"><i class="fas fa-globe-europe" style="font-size: 40px; line-height: 70px;"></i></div>`,
 
     listaLetras: ["<i class='fas fa-check' style='font-size: 14pt;'></i>","_","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"],
     indiceInicial: 0,

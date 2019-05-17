@@ -4,7 +4,7 @@ var chamadasController = {
     id: "CHAMADAS",
     url: "ecraCHAMADAS/chamadasView.html",
     css: "ecraCHAMADAS/chamadasStyles.css",
-    iconHtml: `<div class="hud-icon" id="icon-ecra-CHAMADAS"><i class="fas fa-phone" style="font-size: 34pt; line-height: 70px;"></i></div>`,
+    iconHtml: `<div class="hud-icon" id="icon-ecra-CHAMADAS"><i class="fas fa-phone" style="font-size: 32pt; line-height: 70px;"></i></div>`,
 
     opcaoActual: undefined,
 
