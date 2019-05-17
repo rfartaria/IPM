@@ -207,11 +207,7 @@ var escritaController = {
             gpsController.loadOwnEcraView();
             gpsController.setAccoesIniciais();
             gpsController.destinoAtual = aTirar.text();
-
-            /*HUD.setEcraInactivo();
-            HUD.setAccoesPadrao();*/
-            
-            
+            HUD.addStateIcon('<span id="state-icon-gps"><i class="fas fa-globe-europe" style="padding-left:10px;"></i><span>');
         }
 
         HUD.accoes.clickRIGHT = HUD.accoes.clickBack;

@@ -23,8 +23,10 @@ var gpsController = {
         // gpsController.setUp();
         HUD.accoes.clickOK = function() {
             if(gpsController.opcaoActual == 2){
+                // Terminar rota
                 gpsController.destinoAtual = "Nenhum";
                 gpsController.updateInterface();
+                HUD.removeSateIcon('state-icon-gps');
             }
             if (HUD.ecraActual) {
                 gpsController.opcoesControllers[gpsController.opcaoActual].loadOwnEcraView();
