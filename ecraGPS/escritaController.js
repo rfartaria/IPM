@@ -203,6 +203,7 @@ var escritaController = {
         HUD.accoes.clickOK = function() {
             var aTirar = $('#lista-sugestoes li:eq('+(escritaController.sugestaoSelecionada)+')');
             aTirar.removeClass('opcao-seleccionada');
+            escritaController.nSugestoes = 0;
 
             gpsController.loadOwnEcraView();
             gpsController.setAccoesIniciais();
