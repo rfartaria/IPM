@@ -17,6 +17,7 @@ var HUD = {
         HUD.ecrasOrdem = [];
         HUD.ecraActual = undefined;
         HUD.setAccoesPadrao();
+        HUD.animate_onoff_arrow();
     },
 
     turnON: function() {
@@ -26,6 +27,7 @@ var HUD = {
         HUD.ecraActual = help1Controller;
         HUD.loadEcraView();
         HUD.updateInterface();
+        if ($("i.on-off-arrow").length) $("i.on-off-arrow").css("display","none");
     },
     
     turnOFF: function() {
@@ -33,6 +35,8 @@ var HUD = {
         HUD.setEcraInactivo();
         HUD.hideTopBar();
         HUD.clearInterface();
+        // if ($("i.on-off-arrow").length) $("i.on-off-arrow").css("display","block");
+        // HUD.animate_onoff_arrow();
     },
 
     nextEcra: function() {
@@ -156,7 +160,7 @@ var HUD = {
 
     setEcraInactivo: function() {
         $('#hud-screen-container-outer').removeClass('hud-screen-active');
-        $('#icon-ecra-'+HUD.ecraActual.id).addClass("hud-icon-active");
+        if(HUD.ecraActual) $('#icon-ecra-'+HUD.ecraActual.id).addClass("hud-icon-active");
     },
 
     showTopBar: function() {
@@ -195,6 +199,22 @@ var HUD = {
     clearInterface: function() {
         $('#hud-icons-container').html('');
         $('#hud-screen-container-inner').html('');
+    },
+
+    animate_onoff_arrow() {
+        var direction = 1;
+        function go_animate() {
+            var jobj = $("i.on-off-arrow");
+            if (! jobj.length) return;
+            if (HUD.estado == "ON") return;
+            if (direction == 1)
+                jobj.animate({color: "#ff0000"},1000);
+            else
+                jobj.animate({color: "#ffffff"},1000);
+            direction = -direction;
+            setTimeout(go_animate, 2000);
+        }
+        go_animate();
     }
 }
 
