@@ -12,7 +12,7 @@ var escritaController = {
     numElem: 7,
 
     listaSugestoes: ["RUA\xa0DAS\xa0FLORES","RUA\xa0DOS\xa0DIAMANTES","AVENIDA\xa0AVENIDO","LARGO\xa0DOS\xa0PATOS","RUA\xa0FELIZ","AVENIDA\xa0DA\xa0IGUALDADE"],
-    nSugestoes : 4,
+    nSugestoes : 0,
 
     sugestaoSelecionada: 0,
 
@@ -74,19 +74,19 @@ var escritaController = {
         HUD.accoes.clickRIGHT = function(){};
 
         HUD.accoes.clickLEFT = function(){ 
-            if(escritaController.nSugestoes > 0){
+            //if(escritaController.nSugestoes > 0){
                 escritaController.sugestaoSelecionada = 0;
                 var aRemover = $('#alfabeto li:eq(0)');
                 aRemover.removeClass("opcao-seleccionada");
                 var aSelecionar = $('#lista-sugestoes li:eq('+escritaController.sugestaoSelecionada+')');
                 aSelecionar.addClass("opcao-seleccionada");
                 escritaController.setAccoesSugestoes();
-            }else{
+            /*}else{
                 gpsController.loadOwnEcraView();
                 gpsController.updateInterface()
                 gpsController.setAccoesIniciais();
                 HUD.accoes.clickBack();
-            }
+        }*/
         }
         
     },
@@ -118,7 +118,7 @@ var escritaController = {
             var aRetirar = $('#lista-sugestoes li:eq('+i+')');
             aRetirar.text("");
         }
-        //escritaController.nSugestoes = 0;
+        escritaController.nSugestoes = 0;
     },
 
     adicionaLetra: function(l){
@@ -201,14 +201,16 @@ var escritaController = {
         }
         //OK
         HUD.accoes.clickOK = function() {
-            var aTirar = $('#lista-sugestoes li:eq('+(escritaController.sugestaoSelecionada)+')');
-            aTirar.removeClass('opcao-seleccionada');
-            //escritaController.nSugestoes = 0;
+            if(escritaController.nSugestoes > 0){
+                var aTirar = $('#lista-sugestoes li:eq('+(escritaController.sugestaoSelecionada)+')');
+                aTirar.removeClass('opcao-seleccionada');
+                escritaController.nSugestoes = 0;
 
-            gpsController.loadOwnEcraView();
-            gpsController.setAccoesIniciais();
-            gpsController.destinoAtual = aTirar.text();
-            HUD.addStateIcon('<span id="state-icon-gps"><i class="fas fa-globe-europe" style="padding-left:10px;"></i><span>');
+                gpsController.loadOwnEcraView();
+                gpsController.setAccoesIniciais();
+                gpsController.destinoAtual = aTirar.text();
+                HUD.addStateIcon('<span id="state-icon-gps"><i class="fas fa-globe-europe" style="padding-left:10px;"></i><span>');
+            }
         }
 
         HUD.accoes.clickRIGHT = HUD.accoes.clickBack;
@@ -231,7 +233,8 @@ var escritaController = {
     },
 
     nextOpcao: function(){
-        if(escritaController.sugestaoSelecionada != escritaController.nSugestoes-1){
+        //<3 para impedir fazer scroll down infinito quando nSugestoes = 0
+        if(escritaController.sugestaoSelecionada != escritaController.nSugestoes-1 && escritaController.sugestaoSelecionada < 3){
             escritaController.sugestaoSelecionada++;
             var aRemover = $('#lista-sugestoes li:eq('+(escritaController.sugestaoSelecionada-1)+')');
             aRemover.removeClass('opcao-seleccionada');
