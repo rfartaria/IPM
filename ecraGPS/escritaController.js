@@ -12,7 +12,7 @@ var escritaController = {
     numElem: 7,
 
     listaSugestoes: ["RUA\xa0DAS\xa0FLORES","RUA\xa0DOS\xa0DIAMANTES","AVENIDA\xa0AVENIDO","LARGO\xa0DOS\xa0PATOS","RUA\xa0FELIZ","AVENIDA\xa0DA\xa0IGUALDADE"],
-    nSugestoes : 0,
+    nSugestoes : 4,
 
     sugestaoSelecionada: 0,
 
@@ -118,7 +118,7 @@ var escritaController = {
             var aRetirar = $('#lista-sugestoes li:eq('+i+')');
             aRetirar.text("");
         }
-        escritaController.nSugestoes = 0;
+        //escritaController.nSugestoes = 0;
     },
 
     adicionaLetra: function(l){
@@ -203,7 +203,7 @@ var escritaController = {
         HUD.accoes.clickOK = function() {
             var aTirar = $('#lista-sugestoes li:eq('+(escritaController.sugestaoSelecionada)+')');
             aTirar.removeClass('opcao-seleccionada');
-            escritaController.nSugestoes = 0;
+            //escritaController.nSugestoes = 0;
 
             gpsController.loadOwnEcraView();
             gpsController.setAccoesIniciais();
