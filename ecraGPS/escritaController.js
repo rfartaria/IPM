@@ -210,6 +210,7 @@ var escritaController = {
                 gpsController.setAccoesIniciais();
                 gpsController.destinoAtual = aTirar.text();
                 HUD.addStateIcon('<span id="state-icon-gps"><i class="fas fa-globe-europe" style="padding-left:10px;"></i><span>');
+                infoVeiculoController.gpsON = true;
             }
         }
 

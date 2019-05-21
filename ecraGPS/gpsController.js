@@ -27,6 +27,7 @@ var gpsController = {
                 gpsController.destinoAtual = "Nenhum";
                 gpsController.updateInterface();
                 HUD.removeSateIcon('state-icon-gps');
+                infoVeiculoController.gpsON = false;
             }
             if (HUD.ecraActual) {
                 gpsController.opcoesControllers[gpsController.opcaoActual].loadOwnEcraView();
